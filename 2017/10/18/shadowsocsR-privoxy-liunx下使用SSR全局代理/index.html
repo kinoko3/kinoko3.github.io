@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="kinoko3" />
+
+
+
+<meta name="description" content="前言因为这段时间要去学校机房做实验，然后学校机房的网络可能经过了过滤，大陆外的ip一律无法访问，我们在机房用的系统是Ubuntu17.04，我直接用手机usb直接分享网络给机器使用（本来我还以为要使用复杂的网络设置，没想到现在的系统这么高级直接插上就可以使用了）。。但是我们还需要在liunx系统上进行外网访问，然后我测试了很多方法，比如以前的ss-Qt5，electron-ssr之类的GUI软件，">
+<meta name="keywords" content="shadowcsoksR,liunx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocsR+privoxy liunx下使用SSR全局代理">
+<meta property="og:url" content="http://yoursite.com/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/index.html">
+<meta property="og:site_name" content="kinoko3のblog">
+<meta property="og:description" content="前言因为这段时间要去学校机房做实验，然后学校机房的网络可能经过了过滤，大陆外的ip一律无法访问，我们在机房用的系统是Ubuntu17.04，我直接用手机usb直接分享网络给机器使用（本来我还以为要使用复杂的网络设置，没想到现在的系统这么高级直接插上就可以使用了）。。但是我们还需要在liunx系统上进行外网访问，然后我测试了很多方法，比如以前的ss-Qt5，electron-ssr之类的GUI软件，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-18T03:35:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowsocsR+privoxy liunx下使用SSR全局代理">
+<meta name="twitter:description" content="前言因为这段时间要去学校机房做实验，然后学校机房的网络可能经过了过滤，大陆外的ip一律无法访问，我们在机房用的系统是Ubuntu17.04，我直接用手机usb直接分享网络给机器使用（本来我还以为要使用复杂的网络设置，没想到现在的系统这么高级直接插上就可以使用了）。。但是我们还需要在liunx系统上进行外网访问，然后我测试了很多方法，比如以前的ss-Qt5，electron-ssr之类的GUI软件，">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="kinoko3のblog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>shadowsocsR+privoxy liunx下使用SSR全局代理 | kinoko3のblog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars3.githubusercontent.com/u/10653502?v=4&amp;s=460" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">kinoko3</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/su897500263@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/kinoko3" title="GitHub"></a>
+                            
+                                <a class="fa Twitter" href="https://twitter.com/kinokosu3" title="Twitter"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">kinoko3</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars3.githubusercontent.com/u/10653502?v=4&amp;s=460" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">kinoko3</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/su897500263@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/kinoko3" title="GitHub"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="https://twitter.com/kinokosu3" title="Twitter"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-shadowsocsR-privoxy-liunx下使用SSR全局代理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/" class="article-date">
+      <time datetime="2017-10-18T01:32:05.000Z" itemprop="datePublished">2017-10-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shadowsocsR+privoxy liunx下使用SSR全局代理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习纪录/">学习纪录</a><a class="article-category-link" href="/categories/学习纪录/备忘录/">备忘录</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/liunx/">liunx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为这段时间要去学校机房做实验，然后学校机房的网络可能经过了过滤，大陆外的ip一律无法访问，我们在机房用的系统是Ubuntu17.04，我直接用手机usb直接分享网络给机器使用（本来我还以为要使用复杂的网络设置，没想到现在的系统这么高级直接插上就可以使用了）。。但是我们还需要在liunx系统上进行外网访问，然后我测试了很多方法，比如以前的ss-Qt5，electron-ssr之类的GUI软件，但是都不行，后来有dalao指点，使用shadowsocksR-libv或者shadowsocksR-Python版加privoxy进行全局代理，然后我想了下，就试试吧，折腾了一晚终于完成了。</p>
+<blockquote>
+<p>最后的shadowsocksR-libv的版本是2.6.3</p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>因为破娃妹子已经把源项目全部rm了，我们需要去shadowsocksR-backup里找到备份<a href="https://github.com/shadowsocksr-backup/shadowsocksr-libev" target="_blank" rel="external">shadowsocksr-libev</a>，然后<code>git clone</code>或者直接下载回到本地。</p>
+<p>我们可以来到文档处，因为我们是ubuntu系统我就进入ubuntu的配置</p>
+<p>输入命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> cd shadowsocks-libev</div><div class="line"><span class="meta">$</span> sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev \</div><div class="line">    gawk debhelper dh-systemd init-system-helpers pkg-config asciidoc xmlto apg libpcre3-dev</div><div class="line"><span class="meta">$</span> dpkg-buildpackage -b -us -uc -i</div><div class="line"><span class="meta">$</span> cd ..</div><div class="line"><span class="meta">$</span> sudo dpkg -i shadowsocks-libev*.deb</div></pre></td></tr></table></figure>
+<p>最后的<code>shadowsocks-libev*.deb</code>是最后打包好的deb包，输入打包出来的文件名。</p>
+<p>然后终极大坑来了</p>
+<p>我们使用命令<code>ss-local</code>使用代理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> ss-local -o [obfs混淆协议] -O [protocol协议] -g [obfsparam混淆参数] -s [服务器地址] -p [服务器端口] -l [本地监听端口] -b [本地监听地址] -k [SS密码] -m [加密方式]</div></pre></td></tr></table></figure>
+<p>记住所有选项的顺序一定要按照以上顺序输入</p>
+<blockquote>
+<p>有个巨坑，我在测试的时候发现重启一次电脑之后，ss-local就没有混淆协议的选项了！！！！如果你使用-O、-g,ss-local会报错没有该参数，后来我转移到另外一台ubuntu虚拟机又可以使用了，坑死。。。。推荐如果出现错误，直接把shadowsocksR-libev删除掉，重新安装包。</p>
+</blockquote>
+<p>然后我们安装<code>privoxy</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> sudo apt-get install privoxy</div></pre></td></tr></table></figure>
+<p>安装完成之后，我们进入<code>/etc/orivoxy</code>更改<code>config</code>，把这句注释掉：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> listen-address localhost:8118</div></pre></td></tr></table></figure>
+<p>然后在最后一行加上：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">forward-socks5 / 127.0.0.1:1080 .</div><div class="line">listen-address 127.0.0.1:8118</div></pre></td></tr></table></figure>
+<p>记住第一行后面有一个<code>.</code>，我配置的时候没有记得加<code>.</code>，然后一直不行吓死我了。</p>
+<p>然后我们配置全局的http proxy, <code>sudo vim /etc/environment</code>，加入下面的代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=http://127.0.0.1:8118</div><div class="line">export https_proxy=http://127.0.0.1:8118</div></pre></td></tr></table></figure>
+<p>然后我们重启计算机，重新来一次<code>ss-local</code>连上代理，使用<code>curl www.google.com</code>试试</p>
+<p>大功告成。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/10/18/python特殊方法学习①/">
+                    python特殊方法学习①
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/10/11/flask-uwsgi-nginx的部署/">
+                    flask+uwsgi+nginx的部署
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"shadowsocsR+privoxy liunx下使用SSR全局代理　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+  
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/';
+            this.page.identifier = '2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//kinoko3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/10/18/python特殊方法学习①/" title="上一篇: python特殊方法学习①">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/10/11/flask-uwsgi-nginx的部署/" title="下一篇: flask+uwsgi+nginx的部署">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 kinoko3
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

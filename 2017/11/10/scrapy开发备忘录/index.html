@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="kinoko3" />
+
+
+
+<meta name="description" content="前言最近进了一个数据挖掘的小组，又是干爬虫的事，以前使用bs4+requests用的很顺，但是要优化的东西太多了，就打算学习个框架什么的，就看中了scrapy，希望它不错  用了一段时间之后，只能感叹，还是轮子好用。 scrapy基础开发一个简单的项目基础项目格式 12345678910111213.├── __init__.py├── items.py├── middlewares.py├──">
+<meta name="keywords" content="python,爬虫,scrapy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy开发备忘录">
+<meta property="og:url" content="http://yoursite.com/2017/11/10/scrapy开发备忘录/index.html">
+<meta property="og:site_name" content="kinoko3のblog">
+<meta property="og:description" content="前言最近进了一个数据挖掘的小组，又是干爬虫的事，以前使用bs4+requests用的很顺，但是要优化的东西太多了，就打算学习个框架什么的，就看中了scrapy，希望它不错  用了一段时间之后，只能感叹，还是轮子好用。 scrapy基础开发一个简单的项目基础项目格式 12345678910111213.├── __init__.py├── items.py├── middlewares.py├──">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-10T16:12:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scrapy开发备忘录">
+<meta name="twitter:description" content="前言最近进了一个数据挖掘的小组，又是干爬虫的事，以前使用bs4+requests用的很顺，但是要优化的东西太多了，就打算学习个框架什么的，就看中了scrapy，希望它不错  用了一段时间之后，只能感叹，还是轮子好用。 scrapy基础开发一个简单的项目基础项目格式 12345678910111213.├── __init__.py├── items.py├── middlewares.py├──">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="kinoko3のblog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>scrapy开发备忘录 | kinoko3のblog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars3.githubusercontent.com/u/10653502?v=4&amp;s=460" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">kinoko3</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/su897500263@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/kinoko3" title="GitHub"></a>
+                            
+                                <a class="fa Twitter" href="https://twitter.com/kinokosu3" title="Twitter"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">kinoko3</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars3.githubusercontent.com/u/10653502?v=4&amp;s=460" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">kinoko3</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/su897500263@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/kinoko3" title="GitHub"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="https://twitter.com/kinokosu3" title="Twitter"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-scrapy开发备忘录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/10/scrapy开发备忘录/" class="article-date">
+      <time datetime="2017-11-10T14:16:08.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      scrapy开发备忘录
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/备忘录/">备忘录</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近进了一个数据挖掘的小组，又是干爬虫的事，以前使用bs4+requests用的很顺，但是要优化的东西太多了，就打算学习个框架什么的，就看中了scrapy，希望它不错</p>
+<hr>
+<p>用了一段时间之后，只能感叹，还是轮子好用。</p>
+<h2 id="scrapy基础开发"><a href="#scrapy基础开发" class="headerlink" title="scrapy基础开发"></a>scrapy基础开发</h2><h3 id="一个简单的项目"><a href="#一个简单的项目" class="headerlink" title="一个简单的项目"></a>一个简单的项目</h3><p>基础项目格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── __init__.py</div><div class="line">├── items.py</div><div class="line">├── middlewares.py</div><div class="line">├── pipelines.py</div><div class="line">├── run.py</div><div class="line">├── settings.py</div><div class="line">└── spiders</div><div class="line">    ├── __init__.py</div><div class="line">    ├── main_spider.py</div><div class="line">    ├── my_spider.py</div><div class="line">    ├── quotes_spider.py</div><div class="line">    └── test_spider.py</div></pre></td></tr></table></figure>
+<p><code>spiders</code>文件夹里存放爬虫文件，<code>settings</code>是配置文件，<code>items</code>是字段文件，<code>run</code>是从文件执行爬虫，<code>middlewares</code>是中间件，<code>piplines</code>用来清理<code>items</code>或者存进数据库。</p>
+<h3 id="一个简单的爬虫文件"><a href="#一个简单的爬虫文件" class="headerlink" title="一个简单的爬虫文件"></a>一个简单的爬虫文件</h3><p>我们的文件放在spiders文件夹里，一个简单的爬虫：</p>
+<p><code>new_spiders.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSpider</span><span class="params">(scrapy.Spider)</span>:</span></div><div class="line">	name = <span class="string">"test"</span></div><div class="line">    start_urls = [</div><div class="line">        <span class="string">'https://www.bilibili.com/'</span></div><div class="line">    ]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">    	<span class="keyword">yield</span> &#123;<span class="string">"title"</span>: h3&#125;</div></pre></td></tr></table></figure>
+<p><code>name</code>是爬虫的名字，<code>start_urls</code>是爬虫开始爬的第一个页面。一个爬虫一个爬虫类。</p>
+<p><code>parse</code>方法是固定的，用来返回数据。</p>
+<h3 id="scrapy-shell调试"><a href="#scrapy-shell调试" class="headerlink" title="scrapy shell调试"></a>scrapy shell调试</h3><p>我们使用命令<code>scrapy shell url</code>，就可以进入这个url下的一个控制台</p>
+<p>一般我们使用返回的<code>response</code>进行当前网站的分析，使用<code>response.xpath</code>就可以定位元素。</p>
+<p>我们能做的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)</div><div class="line">[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x10068c320&gt;</div><div class="line">[s]   item       &#123;&#125;</div><div class="line">[s]   request    &lt;GET https://www.bilibili.com/&gt;</div><div class="line">[s]   response   &lt;200 https://www.bilibili.com/&gt;</div><div class="line">[s]   settings   &lt;scrapy.settings.Settings object at 0x10754eac8&gt;</div><div class="line">[s]   spider     &lt;DefaultSpider &apos;default&apos; at 0x1078eeda0&gt;</div><div class="line">[s] Useful shortcuts:</div><div class="line">[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)</div><div class="line">[s]   fetch(req)                  Fetch a scrapy.Request and update local objects </div><div class="line">[s]   shelp()           Shell help (print this help)</div><div class="line">[s]   view(response)    View response in a browser</div></pre></td></tr></table></figure>
+<h3 id="选择器-Selectors"><a href="#选择器-Selectors" class="headerlink" title="选择器(Selectors)"></a>选择器(Selectors)</h3><p>我们通常使用<code>xpath</code>来解析网页。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.xpath(<span class="string">'//title/text()'</span>).extract()</div></pre></td></tr></table></figure>
+<p>我们调用<code>extract()</code>方法来获取原文数据，整句返回一个<code>List</code>。</p>
+<p>我们还能使用正则表达式，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response.xpath(<span class="string">'//title/text()'</span>).re(<span class="string">'\d+'</span>)</div></pre></td></tr></table></figure>
+<p>不需要加<code>extract()</code>方法。</p>
+<h3 id="Items"><a href="#Items" class="headerlink" title="Items"></a>Items</h3><p><code>scrapy</code>的字段设置在项目里的<code>items.py</code>文件里设置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FirstSpiderItem</span><span class="params">(scrapy.Item)</span>:</span></div><div class="line">    <span class="comment"># define the fields for your item here like:</span></div><div class="line">    title = scrapy.Field()</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p>设置很简单，所有的字段都设置成<code>Field</code>。</p>
+<p>使用Items也很简单，我们把字段导入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> ..items <span class="keyword">import</span> DoubanBookStatusItem</div></pre></td></tr></table></figure>
+<p>在<code>parse</code>方法（也可以是自己定义的返回数据方法）里可以这样使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">item = DoubanBookStatusItem()</div><div class="line">item[<span class="string">'press'</span>] = response.xpath(<span class="string">'//*[@id="info"]'</span>).re(<span class="string">'(?&lt;=出版社:&lt;/span&gt; ).*?(?=&lt;br&gt;)'</span>)[<span class="number">0</span>]    <span class="comment"># 出版社</span></div></pre></td></tr></table></figure>
+<p><code>press</code>为我们定义的字段名。</p>
+<blockquote>
+<p>有一个需要注意的，我们使用迭代器yield返回的数据全部都是字典格式的。</p>
+</blockquote>
+<h3 id="piplines"><a href="#piplines" class="headerlink" title="piplines"></a>piplines</h3><blockquote>
+<p>功能需要在settings里面设置</p>
+</blockquote>
+<p>我们使用mongodb保存,直接贴出代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MongoPipline</span><span class="params">(object)</span>:</span></div><div class="line">    collection_name = <span class="string">'scrapy_items'</span>	<span class="comment"># mongodb集合名</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.mongo_server = <span class="string">'localhost'</span></div><div class="line">        self.mongo_db = <span class="string">'runoob'</span></div><div class="line">        self.port = <span class="number">27017</span></div><div class="line">        self.client = <span class="keyword">None</span></div><div class="line">        self.db = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open_spider</span><span class="params">(self, spider)</span>:</span></div><div class="line">        </div><div class="line">        self.client = pymongo.MongoClient(self.mongo_server, self.port)</div><div class="line">        self.db = self.client[self.mongo_db]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_spider</span><span class="params">(self, spider)</span>:</span></div><div class="line">        self.client.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></div><div class="line">        self.db[self.collection_name].insert_one(dict(item))</div><div class="line">        <span class="keyword">return</span> item</div></pre></td></tr></table></figure>
+<p><code>piplines</code>大概能实现下面功能：</p>
+<p>定义一个Python类，然后实现方法<code>process_item(self, item, spider)</code>即可，返回一个字典或<code>Item</code>，或者抛出<code>DropItem</code>异常丢弃这个<code>Item</code>。</p>
+<p>或者还可以实现下面几个方法：</p>
+<ul>
+<li><code>open_spider(self, spider)</code> 蜘蛛打开的时执行</li>
+<li><code>close_spider(self, spider)</code> 蜘蛛关闭时执行</li>
+<li><code>from_crawler(cls, crawler)</code> 可访问核心组件比如配置和信号，并注册钩子函数到Scrapy中。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/11/19/mongodb部署设置/">
+                    mongodb一些部署设置
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/10/25/python装饰器/">
+                    python装饰器
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scrapy基础开发"><span class="toc-number">2.</span> <span class="toc-text">scrapy基础开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的项目"><span class="toc-number">2.1.</span> <span class="toc-text">一个简单的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的爬虫文件"><span class="toc-number">2.2.</span> <span class="toc-text">一个简单的爬虫文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scrapy-shell调试"><span class="toc-number">2.3.</span> <span class="toc-text">scrapy shell调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器-Selectors"><span class="toc-number">2.4.</span> <span class="toc-text">选择器(Selectors)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Items"><span class="toc-number">2.5.</span> <span class="toc-text">Items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#piplines"><span class="toc-number">2.6.</span> <span class="toc-text">piplines</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"scrapy开发备忘录　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+  
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/11/10/scrapy开发备忘录/';
+            this.page.identifier = '2017/11/10/scrapy开发备忘录/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//kinoko3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/11/19/mongodb部署设置/" title="上一篇: mongodb一些部署设置">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/10/25/python装饰器/" title="下一篇: python装饰器">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 kinoko3
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
