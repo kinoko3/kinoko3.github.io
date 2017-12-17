@@ -33,7 +33,8 @@
 <meta property="og:image" content="http://ouonrxq3b.bkt.clouddn.com/Apriori/7.png">
 <meta property="og:image" content="http://ouonrxq3b.bkt.clouddn.com/Apriori/8.png">
 <meta property="og:image" content="http://ouonrxq3b.bkt.clouddn.com/Apriori/9.png">
-<meta property="og:updated_time" content="2017-12-17T08:16:01.958Z">
+<meta property="og:image" content="http://ouonrxq3b.bkt.clouddn.com/Apriori/10.png">
+<meta property="og:updated_time" content="2017-12-17T08:18:27.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apriori-python复现过程">
 <meta name="twitter:description" content="前言做数据分析首先需要数据集进行分析，但是我们没有大规模的数据集，可以采用公开的数据集，我们现在做的是一个关联分析的推荐系统，有一个非常出名的电影数据测试集- Moivelens. 选择数据集里面有很多的大小不同的数据集，我们选择最大的那个ml-20m。毕竟我们需要大数据才能复现算法。  需要的python库因为我们暂时不需要可视化，所以只引入了下面的库：  pandas  (写到这里愣了一下，发">
@@ -146,10 +147,10 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
                     </ul>
@@ -254,7 +255,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-Apriori-python复现过程" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -323,7 +324,7 @@
 <p>我们发现时间转换公元时间了。</p>
 <h2 id="Apriori算法复现"><a href="#Apriori算法复现" class="headerlink" title="Apriori算法复现"></a>Apriori算法复现</h2><p>我们要实现的关联规则是</p>
 <ul>
-<li><h3 id="如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。"><a href="#如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。" class="headerlink" title="如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。"></a>如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。</h3></li>
+<li>如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。</li>
 </ul>
 <p>首先我们要知道，用户是否喜欢这一步电影，我们创建一个新的特征<code>favorable</code>,如果用户喜欢这部电影,值为<code>True</code><br>。</p>
 <p>代码:</p>
@@ -395,7 +396,7 @@
 <p>我们使用前提和结论作为规则，结论仅仅只为一个值得推荐的电影。前提为<code>频繁项集</code>内的项目。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> itemset_length, itemset_counts <span class="keyword">in</span> frequent_itemsets.items():</div><div class="line">    <span class="keyword">for</span> itemset <span class="keyword">in</span> itemset_counts.keys():</div><div class="line">        <span class="keyword">for</span> conclusion <span class="keyword">in</span> itemset:</div><div class="line">            premise = itemset - set((conclusion,))</div><div class="line">            candidate_rules.append((premise, conclusion))</div></pre></td></tr></table></figure>
 <p>我们输出我们的关联规则看看:</p>
-<p><img src="" alt=""></p>
+<p><img src="http://ouonrxq3b.bkt.clouddn.com/Apriori/10.png" alt="candidate"></p>
 <p>获得关联规则后，我们还需要计算<code>置信度</code>，<code>置信度</code>为规则应验的次数。</p>
 <p>首先我们建两个<code>defaultdict</code>字典用来存储规则应验的次数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 存储规则应验的次数</span></div><div class="line">corrent_couts = defaultdict(int)</div><div class="line"><span class="comment"># 不应验的次数</span></div><div class="line">incorrect_couts = defaultdict(int)</div></pre></td></tr></table></figure>
@@ -426,9 +427,9 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择数据集"><span class="toc-number">2.</span> <span class="toc-text">选择数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要的python库"><span class="toc-number">3.</span> <span class="toc-text">需要的python库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据集整理"><span class="toc-number">4.</span> <span class="toc-text">数据集整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apriori算法复现"><span class="toc-number">5.</span> <span class="toc-text">Apriori算法复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。"><span class="toc-number">5.1.</span> <span class="toc-text">如果一个用户喜欢一个电影，那么他们可能喜欢这部电影。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#未完待续"><span class="toc-number">6.</span> <span class="toc-text">未完待续</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择数据集"><span class="toc-number">2.</span> <span class="toc-text">选择数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要的python库"><span class="toc-number">3.</span> <span class="toc-text">需要的python库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据集整理"><span class="toc-number">4.</span> <span class="toc-text">数据集整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apriori算法复现"><span class="toc-number">5.</span> <span class="toc-text">Apriori算法复现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#未完待续"><span class="toc-number">6.</span> <span class="toc-text">未完待续</span></a></li></ol>
         
     </div>
     <style>
@@ -442,10 +443,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -507,13 +508,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/11/19/mongodb部署设置/" title="Next: mongodb一些部署设置">
+            <a href="/2017/11/19/mongodb部署设置/" title="下一篇: mongodb一些部署设置">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -536,14 +537,14 @@
                 2017 kinoko3
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -552,7 +553,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -585,9 +586,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
