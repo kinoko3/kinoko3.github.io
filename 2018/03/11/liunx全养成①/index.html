@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="在monogo shell的命令使用连接数据库本地数据库链接，默认的路径是/data/db/,可以使用--dbpath来指定数据库路径 1$ sudo mongod --path ~/Desktop/db/  创建数据库语法：use DATABASE_NAME 也有切换数据库操作的意思 1234&amp;gt; use runoobswitched to db runoob&amp;gt; dbrunoob 查">
-<meta name="keywords" content="mongodb">
+<meta name="description" content="前言最近小组那边找了一大批新人，看起来都是大佬的样子(笑，而且我也要去上课之类的，所有只好重新开一台阿里云的服务器，上个学期那台已经被阿里云释放了，但是我依旧做好了备份，所以应该没有数据丢失(上个学期爬的100M豆瓣数据说丢就丢毫不含糊)，既然重新来，就做一个记录，当一个wiki使用。该文会长期更新。。 服务器前期工作因为安全问题和方便的问题，安全登录我们先做好准备，首先做好ssh的登录准备。 生">
+<meta name="keywords" content="liunx,Ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb备忘录">
-<meta property="og:url" content="http://yoursite.com/2017/08/25/mongodb备忘录/index.html">
+<meta property="og:title" content="liunx全养成①">
+<meta property="og:url" content="http://yoursite.com/2018/03/11/liunx全养成①/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="在monogo shell的命令使用连接数据库本地数据库链接，默认的路径是/data/db/,可以使用--dbpath来指定数据库路径 1$ sudo mongod --path ~/Desktop/db/  创建数据库语法：use DATABASE_NAME 也有切换数据库操作的意思 1234&amp;gt; use runoobswitched to db runoob&amp;gt; dbrunoob 查">
+<meta property="og:description" content="前言最近小组那边找了一大批新人，看起来都是大佬的样子(笑，而且我也要去上课之类的，所有只好重新开一台阿里云的服务器，上个学期那台已经被阿里云释放了，但是我依旧做好了备份，所以应该没有数据丢失(上个学期爬的100M豆瓣数据说丢就丢毫不含糊)，既然重新来，就做一个记录，当一个wiki使用。该文会长期更新。。 服务器前期工作因为安全问题和方便的问题，安全登录我们先做好准备，首先做好ssh的登录准备。 生">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-14T05:22:00.000Z">
+<meta property="og:updated_time" content="2018-03-11T06:58:59.107Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb备忘录">
-<meta name="twitter:description" content="在monogo shell的命令使用连接数据库本地数据库链接，默认的路径是/data/db/,可以使用--dbpath来指定数据库路径 1$ sudo mongod --path ~/Desktop/db/  创建数据库语法：use DATABASE_NAME 也有切换数据库操作的意思 1234&amp;gt; use runoobswitched to db runoob&amp;gt; dbrunoob 查">
+<meta name="twitter:title" content="liunx全养成①">
+<meta name="twitter:description" content="前言最近小组那边找了一大批新人，看起来都是大佬的样子(笑，而且我也要去上课之类的，所有只好重新开一台阿里云的服务器，上个学期那台已经被阿里云释放了，但是我依旧做好了备份，所以应该没有数据丢失(上个学期爬的100M豆瓣数据说丢就丢毫不含糊)，既然重新来，就做一个记录，当一个wiki使用。该文会长期更新。。 服务器前期工作因为安全问题和方便的问题，安全登录我们先做好准备，首先做好ssh的登录准备。 生">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>mongodb备忘录 | kinoko3のblog</title>
+<title>liunx全养成① | kinoko3のblog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -245,11 +245,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-mongodb备忘录" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-liunx全养成①" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/25/mongodb备忘录/" class="article-date">
-      <time datetime="2017-08-25T11:14:07.000Z" itemprop="datePublished">2017-08-25</time>
+      <a href="/2018/03/11/liunx全养成①/" class="article-date">
+      <time datetime="2018-03-11T03:37:21.000Z" itemprop="datePublished">2018-03-11</time>
 </a>
 
 
@@ -264,7 +264,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mongodb备忘录
+      liunx全养成①
     </h1>
   
 
@@ -272,10 +272,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/备忘录/">备忘录</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/liunx/">liunx</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -285,60 +289,30 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<h3 id="在monogo-shell的命令使用"><a href="#在monogo-shell的命令使用" class="headerlink" title="在monogo shell的命令使用"></a>在monogo shell的命令使用</h3><h4 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h4><p>本地数据库链接，默认的路径是<code>/data/db/</code>,可以使用<code>--dbpath</code>来指定数据库路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> sudo mongod --path ~/Desktop/db/</div></pre></td></tr></table></figure>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>语法：<code>use DATABASE_NAME</code></p>
-<p>也有切换数据库操作的意思</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> use runoob</div><div class="line">switched to db runoob</div><div class="line"><span class="meta">&gt;</span> db</div><div class="line">runoob</div></pre></td></tr></table></figure>
-<h4 id="查看全部数据库"><a href="#查看全部数据库" class="headerlink" title="查看全部数据库"></a>查看全部数据库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> show dbs</div><div class="line">dmin   0.000GB</div><div class="line">local   0.000GB</div><div class="line">runoob  0.000GB</div></pre></td></tr></table></figure>
-<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>语法：<code>db.dropDatabase()</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.dropDatabase()</div><div class="line">&#123; "dropped" : "runoob", "ok" : 1 &#125;</div></pre></td></tr></table></figure>
-<h4 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h4><p>语法：<code>db.createCollection(name,option)</code></p>
-<p><code>options</code>参数，类型是<code>Document</code>,可选有字段<code>capped</code>, <code>autoIndexId</code>,<code>size</code>,<code>max</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.createCollection("firstcollection")</div></pre></td></tr></table></figure>
-<p>带有option参数的：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.createCollection("firstcollection",&#123;capped:ture&#125;)</div></pre></td></tr></table></figure>
-<p>一般情况下不用主动创建集合，插入文档的参数中有<code>collection_name</code></p>
-<h4 id="删除数据库中的一个集合"><a href="#删除数据库中的一个集合" class="headerlink" title="删除数据库中的一个集合"></a>删除数据库中的一个集合</h4><p>语法：<code>db.collection.drop()</code></p>
-<p>比如切换到runoob数据库删除里面的一个site集合</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> use runoob</div><div class="line">switched to db runoob</div><div class="line"><span class="meta">&gt;</span> show tables</div><div class="line">site</div><div class="line"><span class="meta">&gt;</span> db.site.drop()</div><div class="line">true</div><div class="line"><span class="meta">&gt;</span> show tables</div><div class="line"><span class="meta">&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h4><p>Mongodb文档的数据结构和json基本一样，所有的数据都是BSON(存储在集合中的)</p>
-<p>语法：<code>db.COLLECTION_NAME.insert(document)</code></p>
-<h4 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h4><p>有<code>update()</code>和<code>save()</code>方法来更新集合中的文档</p>
-<p>语法格式如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.collection.update(</div><div class="line">	&lt;query&gt;,</div><div class="line">	&lt;update&gt;,</div><div class="line">	&#123;</div><div class="line">		upsert:&lt;boolean&gt;,</div><div class="line">		multi:&lt;boolean&gt;,</div><div class="line">		writeConcern:&lt;document&gt;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
-<p>参数说明：</p>
-<ul>
-<li><p><code>query</code> : <code>update</code>的查询条件，类似<code>sql update</code>查询内<code>where</code>后面的。</p>
-</li>
-<li><p><code>update</code> : <code>update</code>的对象和一些更新的操作符（如$,$inc…）等，也可以理解为<code>sql update</code>查询内<code>set</code>后面的</p>
-</li>
-<li><p><code>upsert</code> : 可选，这个参数的意思是，如果不存在<code>update</code>的记录，是否插入<code>objNew</code>,<code>true</code>为插入，默认是<code>false</code>，不插入。</p>
-</li>
-<li><p><code>multi</code> : 可选，mongodb 默认是<code>false</code>,只更新找到的第一条记录，如果这个参数为<code>true</code>,就把按条件查出来多条记录全部更新。</p>
-</li>
-</ul>
-<p>比如我们在runoob插入文档</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.runoob.insert(&#123;title:'MongiDB',description:"Nosql"&#125;)</div></pre></td></tr></table></figure>
-<p>然后我们通过<code>update()</code>来更新标题</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.runoob.update(&#123;'title':'MongoDB'&#125;,&#123;$set:&#123;'title':'Mongo'&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>以上的语句只会更新找到的第一个文档，如果你要更新多个同样的文档，你需要把<code>multi</code>参数打开</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.runoob.update(&#123;'title':'MongoDB'&#125;,&#123;$set:&#123;'title':'Mongo'&#125;,&#123;multi:ture&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>接下来我们使用<code>save()</code>来更新文档，<code>save()</code>方法通过传递的文档来替换已有文档。</p>
-<p>语法格式如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.save(</div><div class="line">	&lt;document&gt;,</div><div class="line">	&#123;</div><div class="line">	writeConcern:&lt;document&gt;</div><div class="line">&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>比如我们替换了_id为599ea3130a0004f919342ea5的文档数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> db.runoob.save(&#123;"_id":ObjectId("599ea3130a0004f919342ea5"), "name":"kinoko3"&#125;)</div></pre></td></tr></table></figure>
-<h3 id="MongoEngine使用"><a href="#MongoEngine使用" class="headerlink" title="MongoEngine使用"></a>MongoEngine使用</h3><h4 id="定义一个文档"><a href="#定义一个文档" class="headerlink" title="定义一个文档"></a>定义一个文档</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *  </div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Document)</span>:</span>  </div><div class="line"></div><div class="line">    title = StringField(max_length=<span class="number">200</span>, required=<span class="keyword">True</span>)  </div><div class="line"></div><div class="line">    date_modified = DateTimeField(default=datetime.datetime.now)</div></pre></td></tr></table></figure>
-<h4 id="保存到数据库"><a href="#保存到数据库" class="headerlink" title="保存到数据库"></a>保存到数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	<span class="comment"># 第一种保存方法</span></div><div class="line">	page = Page()</div><div class="line">	page.title = <span class="string">"Hatsune Miku"</span></div><div class="line">	page.save()</div><div class="line">	<span class="comment"># 第二种保存方法</span></div><div class="line">	page_1 = Page(title=<span class="string">"Hatsune Miku"</span>)</div><div class="line">	page_1.save()</div></pre></td></tr></table></figure>
-<p>保存之后mongoenine将会创建一个新的以<code>class</code>名命名的集合，比如<code>class Page(Document)</code>的一个类，创建的集合将会是<code>page</code>,查看创建的集合可以在<code>mongodb shell</code>里使用命令<code>show tables</code>或者<code>show collections</code>查看</p>
-<h4 id="动态文档（DynamicDocument）"><a href="#动态文档（DynamicDocument）" class="headerlink" title="动态文档（DynamicDocument）"></a>动态文档（DynamicDocument）</h4><p>动态文档可以在保存数据的时候给数据自定不同的字段<br>比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(DynamicDocument)</span>:</span></div><div class="line">	title = StringField(max_length=<span class="number">200</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	page = Page(title=<span class="string">'Hatsune Miku'</span>)</div><div class="line">	page.tags = [<span class="string">'mongodb'</span>, <span class="string">'mongoengine'</span>]</div><div class="line">	page.save()</div></pre></td></tr></table></figure>
-<p><code>page.tags</code>就是重新在这个文档里插入一个新的字段数据，在保存的时候，这个字段是之前没有在文档类里声明的，如果你不继承动态文档，直接在保存的时候添加字段，运行的时候不会报错，但是新加入的字段不会保存.上面的文档在<code>mongodb shell</code>中显示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> &#123;</div><div class="line">        "_id" : ObjectId("59a2b15c6f1d6513f3401668"),</div><div class="line">        "name" : "Hatsune Miku",</div><div class="line">        "tags" : [</div><div class="line">                "mongodb",</div><div class="line">                "mongoengine"</div><div class="line">        ]</div><div class="line">&#125;</div><div class="line"><span class="meta">&gt;</span></div></pre></td></tr></table></figure>
-<p><code>tags</code>字段是我们后来添加的。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近小组那边找了一大批新人，看起来都是大佬的样子(笑，而且我也要去上课之类的，所有只好重新开一台阿里云的服务器，上个学期那台已经被阿里云释放了，但是我依旧做好了备份，所以应该没有数据丢失(上个学期爬的100M豆瓣数据说丢就丢毫不含糊)，既然重新来，就做一个记录，当一个wiki使用。该文会长期更新。。</p>
+<h2 id="服务器前期工作"><a href="#服务器前期工作" class="headerlink" title="服务器前期工作"></a>服务器前期工作</h2><p>因为安全问题和方便的问题，安全登录我们先做好准备，首先做好<code>ssh</code>的登录准备。</p>
+<h3 id="生成ssh-key实现无密码登录"><a href="#生成ssh-key实现无密码登录" class="headerlink" title="生成ssh-key实现无密码登录"></a>生成ssh-key实现无密码登录</h3><p>无论是本地还是远程，生成<code>ssh</code>秘钥都是一句命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C "your email"</div></pre></td></tr></table></figure>
+<p>实现免密码登录只需要把本地<code>.ssh/id_rsa.pub</code>内的秘钥放在远程服务器的<code>.ssh/authorized_keys</code>内即可实现无密码登录。</p>
+<h3 id="ssh禁止密码登录"><a href="#ssh禁止密码登录" class="headerlink" title="ssh禁止密码登录"></a>ssh禁止密码登录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>禁用密码验证<br>PasswordAuthentication no  //修改为no  133行（最后一行）</p>
+<h2 id="更新安装列表"><a href="#更新安装列表" class="headerlink" title="更新安装列表"></a>更新安装列表</h2><p><code>apt-get update</code></p>
+<h2 id="布置python环境"><a href="#布置python环境" class="headerlink" title="布置python环境"></a>布置python环境</h2><p>阿里云的Ubuntu系统自带两种稳定版<code>python</code>，一种是<code>Python 2.7.12</code>，一种是<code>Python 3.5.2</code>，但是我都不想用，我就是想用又新又稳定的，比如<code>Python-3.6.4</code>。</p>
+<p>我们在python官网上下载编译包<code>wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz</code></p>
+<p>然后解压<code>tar -zxvf Python-3.6.4.tgz</code>。</p>
+<blockquote>
+<p>我们首先先去编译安装一个zlib，不然安装pip和setuptool会出错<br>我们还需要安装openssl,libssl-dev, libsqlite3-dev<br>然后修改python-3.6.4/Modules/Setup，修改<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> Socket module helper for socket(2)  </div><div class="line">_socket socketmodule.c </div><div class="line">  </div><div class="line"><span class="meta">#</span> Socket module helper for SSL support; you must comment out the other  </div><div class="line"><span class="meta">#</span> socket line above, and possibly edit the SSL variable:  </div><div class="line"><span class="meta">#</span>SSL=/usr/local/ssl  </div><div class="line">_ssl _ssl.c \  </div><div class="line">-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \  </div><div class="line"><span class="meta">-L$</span>(SSL)/lib -lssl -lcrypto</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>！！！！！！！！！！！！！一定要完成上面的注意事项再进行编译安装！！！！！！！！！！！！！！！</p>
+<p>我们进入刚刚解压出来的文件夹里，执行3连:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<h3 id="python虚拟环境virtualenv"><a href="#python虚拟环境virtualenv" class="headerlink" title="python虚拟环境virtualenv"></a>python虚拟环境virtualenv</h3><p><code>pip3 install virtualenv</code></p>
+<p>查看<code>Python3.6</code>安装路径:<code>which pyhton3.6</code></p>
+<p>创建虚拟环境: <code>virtualenv -p /usr/bin/python3 py3env</code></p>
+<p>进入虚拟环境: <code>source py3env/bin/activate</code></p>
+<p>退出虚拟环境： <code>deactivate</code></p>
+<h2 id="布置ipython-notebook"><a href="#布置ipython-notebook" class="headerlink" title="布置ipython-notebook"></a>布置ipython-notebook</h2><p><code>pip install ipython</code>、<code>pip install jupyter</code>.</p>
+<p>启动时候注意端口和地址。</p>
 
       
     </div>
@@ -351,15 +325,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/09/04/图解TCP-IP读书纪录/">
-                    图解TCP/IP读书纪录
+                <a href="/2018/03/11/OpenCV-python的坑/">
+                    OpenCV-python的坑
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/08/19/zsh终端折腾纪录①/">
-                    zsh终端折腾纪录①
+                <a href="/2017/12/10/Apriori-python复现过程/">
+                    Apriori-python复现过程
                 </a>
             </div>
         
@@ -371,7 +345,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在monogo-shell的命令使用"><span class="toc-number">1.</span> <span class="toc-text">在monogo shell的命令使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#连接数据库"><span class="toc-number">1.1.</span> <span class="toc-text">连接数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.2.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看全部数据库"><span class="toc-number">1.3.</span> <span class="toc-text">查看全部数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除数据库"><span class="toc-number">1.4.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建集合"><span class="toc-number">1.5.</span> <span class="toc-text">创建集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除数据库中的一个集合"><span class="toc-number">1.6.</span> <span class="toc-text">删除数据库中的一个集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入文档"><span class="toc-number">1.7.</span> <span class="toc-text">插入文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更新文档"><span class="toc-number">1.8.</span> <span class="toc-text">更新文档</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoEngine使用"><span class="toc-number">2.</span> <span class="toc-text">MongoEngine使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义一个文档"><span class="toc-number">2.1.</span> <span class="toc-text">定义一个文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#保存到数据库"><span class="toc-number">2.2.</span> <span class="toc-text">保存到数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态文档（DynamicDocument）"><span class="toc-number">2.3.</span> <span class="toc-text">动态文档（DynamicDocument）</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器前期工作"><span class="toc-number">2.</span> <span class="toc-text">服务器前期工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成ssh-key实现无密码登录"><span class="toc-number">2.1.</span> <span class="toc-text">生成ssh-key实现无密码登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh禁止密码登录"><span class="toc-number">2.2.</span> <span class="toc-text">ssh禁止密码登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新安装列表"><span class="toc-number">3.</span> <span class="toc-text">更新安装列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布置python环境"><span class="toc-number">4.</span> <span class="toc-text">布置python环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#python虚拟环境virtualenv"><span class="toc-number">4.1.</span> <span class="toc-text">python虚拟环境virtualenv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布置ipython-notebook"><span class="toc-number">5.</span> <span class="toc-text">布置ipython-notebook</span></a></li></ol>
         
     </div>
     <style>
@@ -407,7 +381,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"mongodb备忘录　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"liunx全养成①　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -427,8 +401,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2017/08/25/mongodb备忘录/';
-            this.page.identifier = '2017/08/25/mongodb备忘录/';
+            this.page.url = 'http://yoursite.com/2018/03/11/liunx全养成①/';
+            this.page.identifier = '2018/03/11/liunx全养成①/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -450,7 +424,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/09/04/图解TCP-IP读书纪录/" title="上一篇: 图解TCP/IP读书纪录">
+            <a href="/2018/03/11/OpenCV-python的坑/" title="上一篇: OpenCV-python的坑">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -458,7 +432,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/08/19/zsh终端折腾纪录①/" title="下一篇: zsh终端折腾纪录①">
+            <a href="/2017/12/10/Apriori-python复现过程/" title="下一篇: Apriori-python复现过程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
