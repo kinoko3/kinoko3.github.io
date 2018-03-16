@@ -15,21 +15,23 @@
 
 
 
-<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
+<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
 <meta name="keywords" content="WordCloud,中文分词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词云简单实现">
 <meta property="og:url" content="http://yoursite.com/2018/03/16/词云简单实现/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
+<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/test.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/50.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/100.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/stop_word.png">
-<meta property="og:updated_time" content="2018-03-16T12:16:37.579Z">
+<meta property="og:updated_time" content="2018-03-16T14:18:45.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词云简单实现">
-<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/16/词云简单实现/test.png">
+<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/16/词云简单实现/10.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -289,7 +291,9 @@
       
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。</p>
-<img src="/2018/03/16/词云简单实现/test.png" alt="test" title="test">
+<h2 id="实例展示"><a href="#实例展示" class="headerlink" title="实例展示"></a>实例展示</h2><h3 id="TOP10"><a href="#TOP10" class="headerlink" title="TOP10"></a>TOP10</h3><img src="/2018/03/16/词云简单实现/10.png" alt="test" title="test">
+<h3 id="TOP50"><a href="#TOP50" class="headerlink" title="TOP50"></a>TOP50</h3><img src="/2018/03/16/词云简单实现/50.png" alt="test" title="test">
+<h3 id="TOP100"><a href="#TOP100" class="headerlink" title="TOP100"></a>TOP100</h3><img src="/2018/03/16/词云简单实现/100.png" alt="test" title="test">
 <a id="more"></a>
 <h2 id="中文分词简单实现"><a href="#中文分词简单实现" class="headerlink" title="中文分词简单实现"></a>中文分词简单实现</h2><p>经过对比几个流行的python中文分词库，我选择了<a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a></p>
 <h3 id="jieba主要模式"><a href="#jieba主要模式" class="headerlink" title="jieba主要模式"></a>jieba主要模式</h3><p>支持三种分词模式：</p>
@@ -316,6 +320,7 @@
 <p>matplotlib显示的时候会比输出的图片有白边，是因为那个地方原来是坐标系，我们使用axis()方法屏蔽了</p>
 </blockquote>
 <h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wc.to_file(<span class="string">'test.png'</span>)</div></pre></td></tr></table></figure>
+<h3 id="词云形状"><a href="#词云形状" class="headerlink" title="词云形状"></a>词云形状</h3><p>其实还可以使用图片来生成词云的形状的，这个可以百度或者谷歌一下</p>
 
       
     </div>
@@ -342,7 +347,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文分词简单实现"><span class="toc-number">2.</span> <span class="toc-text">中文分词简单实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jieba主要模式"><span class="toc-number">2.1.</span> <span class="toc-text">jieba主要模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TF-IDF算法的关键词的提取"><span class="toc-number">2.2.</span> <span class="toc-text">TF-IDF算法的关键词的提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停用词和词典的导入"><span class="toc-number">2.3.</span> <span class="toc-text">停用词和词典的导入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordCloud-词云-构建"><span class="toc-number">3.</span> <span class="toc-text">WordCloud(词云)构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要参数"><span class="toc-number">3.1.</span> <span class="toc-text">主要参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存图片"><span class="toc-number">3.2.</span> <span class="toc-text">保存图片</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例展示"><span class="toc-number">2.</span> <span class="toc-text">实例展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TOP10"><span class="toc-number">2.1.</span> <span class="toc-text">TOP10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TOP50"><span class="toc-number">2.2.</span> <span class="toc-text">TOP50</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TOP100"><span class="toc-number">2.3.</span> <span class="toc-text">TOP100</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文分词简单实现"><span class="toc-number">3.</span> <span class="toc-text">中文分词简单实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jieba主要模式"><span class="toc-number">3.1.</span> <span class="toc-text">jieba主要模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TF-IDF算法的关键词的提取"><span class="toc-number">3.2.</span> <span class="toc-text">TF-IDF算法的关键词的提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停用词和词典的导入"><span class="toc-number">3.3.</span> <span class="toc-text">停用词和词典的导入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordCloud-词云-构建"><span class="toc-number">4.</span> <span class="toc-text">WordCloud(词云)构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要参数"><span class="toc-number">4.1.</span> <span class="toc-text">主要参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存图片"><span class="toc-number">4.2.</span> <span class="toc-text">保存图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词云形状"><span class="toc-number">4.3.</span> <span class="toc-text">词云形状</span></a></li></ol></li></ol>
         
     </div>
     <style>
