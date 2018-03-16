@@ -135,10 +135,10 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
                     </ul>
@@ -178,7 +178,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordCloud/">WordCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文分词/">中文分词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
                     </div>
                 </section>
                 
@@ -243,9 +243,95 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-词云简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/16/词云简单实现/" class="article-date">
+      <time datetime="2018-03-16T08:49:14.000Z" itemprop="datePublished">2018-03-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/16/词云简单实现/">词云简单实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。</p>
+<img src="/2018/03/16/词云简单实现/test.png" alt="test" title="test">
+<h2 id="中文分词简单实现"><a href="#中文分词简单实现" class="headerlink" title="中文分词简单实现"></a>中文分词简单实现</h2><p>经过对比几个流行的python中文分词库，我选择了<a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a></p>
+<h3 id="jieba主要模式"><a href="#jieba主要模式" class="headerlink" title="jieba主要模式"></a>jieba主要模式</h3><p>支持三种分词模式：</p>
+<ul>
+<li>精确模式，试图将句子最精确地切开，适合文本分析；</li>
+<li>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；</li>
+<li>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。支持繁体分词<br>支持自定义词典</li>
+</ul>
+<p>其他的功能可以进入该库的github页面学习<a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a>。</p>
+<h3 id="TF-IDF算法的关键词的提取"><a href="#TF-IDF算法的关键词的提取" class="headerlink" title="TF-IDF算法的关键词的提取"></a>TF-IDF算法的关键词的提取</h3><p>关于该算法的解释: <a href="https://zh.wikipedia.org/wiki/Tf-idf" target="_blank" rel="external">TF-IDF</a></p>
+<p>因为<code>jieba</code>集成了实现，所以我们可以很简单的使用这个算法进行高频词提取。</p>
+<p>python的使用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> jieba.analyse</div><div class="line"></div><div class="line"><span class="comment"># text_from_file是待提取的文本 </span></div><div class="line"><span class="comment"># tok提取50个高频词(前top50)</span></div><div class="line"><span class="comment"># withWeight 为是否一并返回关键词权重值，默认值为 False</span></div><div class="line"><span class="comment"># tags为一个元组元素组成的列表，元素为关键词和关键词权重值。</span></div><div class="line">tags = jieba.analyse.extract_tags(text_from_file, topK=<span class="number">50</span>,  withWeight=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h3 id="停用词和词典的导入"><a href="#停用词和词典的导入" class="headerlink" title="停用词和词典的导入"></a>停用词和词典的导入</h3><p>如果你不是使用停用词和自定义的词典的话，你会发现像<code>万一</code>、<code>亿美元</code>之类的词会成为我们的高频词，一篇文章自然会出现这些量词之类的，而且会频繁出现，或者会把如<code>云计算</code>拆分成<code>计算</code>这个词，而我们需要的是里面出现的一些名词，这时候我们就需要停用词和自定义词典来更为准确的分词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jieba.load_userdict(<span class="string">"userdict.txt"</span>)</div><div class="line">jieba.analyse.set_stop_words(<span class="string">'stop_words.txt'</span>)</div></pre></td></tr></table></figure>
+<p>停用词词典示例:</p>
+<img src="/2018/03/16/词云简单实现/stop_word.png" alt="stop_word" title="stop_word">
+<h2 id="WordCloud-词云-构建"><a href="#WordCloud-词云-构建" class="headerlink" title="WordCloud(词云)构建"></a>WordCloud(词云)构建</h2><h3 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># from wordcloud import WordCloud</span></div><div class="line"><span class="comment"># font_path为字体</span></div><div class="line"><span class="comment"># random_state 随机数种子</span></div><div class="line"></div><div class="line"></div><div class="line">wc = WordCloud(</div><div class="line">        font_path=<span class="string">'simkai.ttf'</span>,</div><div class="line">        background_color=<span class="string">'white'</span>,</div><div class="line">        max_words=<span class="number">50</span>,</div><div class="line">        max_font_size=<span class="number">200</span>,</div><div class="line">        random_state=<span class="number">42</span>,</div><div class="line">        width=<span class="number">1500</span>, height=<span class="number">1500</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>需要注意的是<code>WordCloud</code>如果不指定中文字体会无法显示</p>
+<p><code>wc.generate_from_frequencies(data_dict)</code>根据词频生成<code>WordCloud</code>。参数为Python的字典类型。</p>
+<p>如果想使用<code>matplotlib</code>进行调试的话，我们这样使用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">plt.figure()</div><div class="line">plt.imshow(wc)</div><div class="line">plt.axis(<span class="string">"off"</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>matplotlib显示的时候会比输出的图片有白边，是因为那个地方原来是坐标系，我们使用axis()方法屏蔽了</p>
+</blockquote>
+<h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wc.to_file(<span class="string">'test.png'</span>)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WordCloud/">WordCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文分词/">中文分词</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-OpenCV-python的坑" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -885,74 +971,6 @@
 
 
   
-    <article id="post-win下的clion配置" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/10/10/win下的clion配置/" class="article-date">
-      <time datetime="2017-10-10T10:55:41.000Z" itemprop="datePublished">2017-10-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="运行环境配置"><a href="#运行环境配置" class="headerlink" title="运行环境配置"></a>运行环境配置</h3><p>我们需要<code>mingw</code>和<code>Cmake</code>，这个是clion需要的运行环境</p>
-<h4 id="mingw安装"><a href="#mingw安装" class="headerlink" title="mingw安装"></a>mingw安装</h4><p>百度mingw，然后点击download/installer,就会自动跳转到下载页面，然后安装，点击之后，一路continue，有个安装路径自己选择一下，如果选择其他路径，可以先创建一个空文件夹再选择其安装。</p>
-<p>然后会出现下载安装器的界面，安装完成之后继续按continue退出。<br><img src="http://ouonrxq3b.bkt.clouddn.com/Clion-config/mingw_2.png" alt="mingw"></p>
-<p>然后会跳转到这个界面<br><img src="http://ouonrxq3b.bkt.clouddn.com/Clion-config/mingw_3.png" alt="mingw"></p>
-<p>我们在要安装的选项右键之后点击<code>Make for Intallation</code>，然后选择以下的选项:<br><img src="http://ouonrxq3b.bkt.clouddn.com/Clion-config/mingw_4.png" alt="mingw"></p>
-<p>然后安装，在左上的<code>Installation</code>选项卡里选择，<code>Apply Changes</code>,就可以安装成功了</p>
-<h4 id="Cmake安装"><a href="#Cmake安装" class="headerlink" title="Cmake安装"></a>Cmake安装</h4><p>我们在官网找到安装页面<a href="https://cmake.org/download/" target="_blank" rel="external">Download</a></p>
-<p>找到cmake 3.8.2的下载的地方，(其他的版本clion不认我也不知道为什么)，选择适合自己系统的版本下载，我们是windows，就选择windows的下载好了。</p>
-<p>然后一路安装就OK了</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clion/">Clion</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -967,14 +985,14 @@
                 2017-2018 kinoko3
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -983,7 +1001,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -1016,9 +1034,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
