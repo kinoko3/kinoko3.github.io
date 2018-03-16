@@ -15,20 +15,20 @@
 
 
 
-<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。  中文分词简单实现经过对比几个流行的python中文分词库，我选择了jieba jieba主要模式支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文">
+<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta name="keywords" content="WordCloud,中文分词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词云简单实现">
 <meta property="og:url" content="http://yoursite.com/2018/03/16/词云简单实现/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。  中文分词简单实现经过对比几个流行的python中文分词库，我选择了jieba jieba主要模式支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文">
+<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/test.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/stop_word.png">
-<meta property="og:updated_time" content="2018-03-16T12:01:56.715Z">
+<meta property="og:updated_time" content="2018-03-16T12:16:37.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词云简单实现">
-<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。  中文分词简单实现经过对比几个流行的python中文分词库，我选择了jieba jieba主要模式支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文">
+<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta name="twitter:image" content="http://yoursite.com/2018/03/16/词云简单实现/test.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -290,6 +290,7 @@
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。</p>
 <img src="/2018/03/16/词云简单实现/test.png" alt="test" title="test">
+<a id="more"></a>
 <h2 id="中文分词简单实现"><a href="#中文分词简单实现" class="headerlink" title="中文分词简单实现"></a>中文分词简单实现</h2><p>经过对比几个流行的python中文分词库，我选择了<a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a></p>
 <h3 id="jieba主要模式"><a href="#jieba主要模式" class="headerlink" title="jieba主要模式"></a>jieba主要模式</h3><p>支持三种分词模式：</p>
 <ul>
