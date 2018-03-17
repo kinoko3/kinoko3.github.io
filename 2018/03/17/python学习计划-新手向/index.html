@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="docker中RUN、CMD、ENTRTPOINT的区别一开始我是对这三个理解的不太够透彻，因为这三个都是运行shell下的命令 最重要的是他们的运行时机不一样，RUN是bulid镜像是用到的指令，最终会commit到镜像 CMD和ENTRTPOINT则是运行时候使用，运行镜像时就会运行这些命令">
-<meta name="keywords" content="docker">
+<meta name="description" content="前言欢迎来到Python的世界！！">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker学习心得①">
-<meta property="og:url" content="http://yoursite.com/2017/08/10/Docker学习心得①/index.html">
+<meta property="og:title" content="python学习计划(新手向)">
+<meta property="og:url" content="http://yoursite.com/2018/03/17/python学习计划-新手向/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="docker中RUN、CMD、ENTRTPOINT的区别一开始我是对这三个理解的不太够透彻，因为这三个都是运行shell下的命令 最重要的是他们的运行时机不一样，RUN是bulid镜像是用到的指令，最终会commit到镜像 CMD和ENTRTPOINT则是运行时候使用，运行镜像时就会运行这些命令">
+<meta property="og:description" content="前言欢迎来到Python的世界！！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-10T14:23:28.000Z">
+<meta property="og:updated_time" content="2018-03-17T04:55:25.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker学习心得①">
-<meta name="twitter:description" content="docker中RUN、CMD、ENTRTPOINT的区别一开始我是对这三个理解的不太够透彻，因为这三个都是运行shell下的命令 最重要的是他们的运行时机不一样，RUN是bulid镜像是用到的指令，最终会commit到镜像 CMD和ENTRTPOINT则是运行时候使用，运行镜像时就会运行这些命令">
+<meta name="twitter:title" content="python学习计划(新手向)">
+<meta name="twitter:description" content="前言欢迎来到Python的世界！！">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Docker学习心得① | kinoko3のblog</title>
+<title>python学习计划(新手向) | kinoko3のblog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -245,11 +245,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Docker学习心得①" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-python学习计划-新手向" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/10/Docker学习心得①/" class="article-date">
-      <time datetime="2017-08-10T11:02:45.000Z" itemprop="datePublished">2017-08-10</time>
+      <a href="/2018/03/17/python学习计划-新手向/" class="article-date">
+      <time datetime="2018-03-17T02:57:22.000Z" itemprop="datePublished">2018-03-17</time>
 </a>
 
 
@@ -264,7 +264,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Docker学习心得①
+      python学习计划(新手向)
     </h1>
   
 
@@ -272,14 +272,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习心得/">学习心得</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -289,10 +285,66 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<h3 id="docker中RUN、CMD、ENTRTPOINT的区别"><a href="#docker中RUN、CMD、ENTRTPOINT的区别" class="headerlink" title="docker中RUN、CMD、ENTRTPOINT的区别"></a>docker中RUN、CMD、ENTRTPOINT的区别</h3><p>一开始我是对这三个理解的不太够透彻，因为这三个都是运行shell下的命令</p>
-<p>最重要的是他们的<strong>运行时机</strong>不一样，RUN是bulid镜像是用到的指令，最终会commit到镜像</p>
-<p>CMD和ENTRTPOINT则是运行时候使用，运行镜像时就会运行这些命令</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>欢迎来到<code>Python</code>的世界！！<br><a id="more"></a><br>也许你已经听过许多的计算机编程语言，比如<code>C/C++</code>,比如经久不衰且流行的<code>Java</code>,比如适合写网页的<code>JavaScript</code>等等</p>
+<p>你会很好奇，<code>python</code>和其他语言到底有什么不同，我们从开发效率来说，比如，完成同一个任务，C语言要写1000行代码，Java只需要写100行，而Python可能只要20行。</p>
+<p>所以<code>Python</code>是一种非常高级的语言。</p>
+<p>代码少，带来的是运行效率的低下，C程序运行1秒钟，Java程序可能需要2秒，而Python程序可能就需要10秒。</p>
+<p>虽然我并不想介入语言之争，但是在<code>github</code> 2017的年度报告，<code>Python</code>超过了<code>Java</code>成为了第二名，这从侧面体现出<code>Python</code>的流行程度，连BAT、Google等等这些公司都在使用<code>Python</code>,所以不必担忧学习了<code>Python</code>之后未来用不上。</p>
+<p><code>Python</code>能干很多事情，日常任务，可以写网络游戏的后台，可以做网站，比如<code>Youtube</code>，就是使用<code>Python</code>写的</p>
+<p>当然，也有<code>Python</code>不能做的事情，比如操作系统，这个只能用C语言写(接近底层且快)，开发APP，只能用<code>Swift/Objective-C</code>(iphone)或者<code>Java/Kotlin</code>(Android)，写游戏内核(比如PUBG的虚幻4引擎)，最好使用<code>C/C++</code></p>
+<p><code>python</code>极其简单，哪怕你没有学过任何编程语言，会使用电脑，你只要上过初中的数学课，并且认真听了，就能学会这门编程语言。</p>
+<p>虽然这么说，但是在<code>python</code>的高级程序设计中，这些抽象的知识也是很难学的(比如元编程、鸭子类型、函数式编程)</p>
+<p>最后，人生苦短，我用Python。</p>
+<blockquote>
+<p>国外大佬的Python全指南(官方中文版)(甚至包括如何装Python)(requests库之父)<a href="https://pythonguidecn.readthedocs.io/zh/latest/" target="_blank" rel="external">Hitchhiker’s Guide to Python</a></p>
+</blockquote>
+<h2 id="一个基本的学习计划-面向数据类"><a href="#一个基本的学习计划-面向数据类" class="headerlink" title="一个基本的学习计划(面向数据类)"></a>一个基本的学习计划(面向数据类)</h2><p>一个月基本要掌握的内容:</p>
+<ul>
+<li><p>输入输出函数(input)(print)</p>
+</li>
+<li><p>数据类型和变量</p>
+</li>
+<li><p>if、for in 、while</p>
+</li>
+<li><p>python基础数据结构的基本使用(dict)(list)(tuple)</p>
+</li>
+<li><p>and or not 逻辑运算符的使用</p>
+</li>
+<li><p>学会第三方库的导入</p>
+</li>
+<li><p>接触并使用函数</p>
+</li>
+</ul>
+<p>(基于快速上手的原则，我们不学习面向对象编程)</p>
+<ul>
+<li><p>文件的IO读写</p>
+</li>
+<li><p>数据结构的高级特性(切片)(拆包)(生成式)</p>
+</li>
+<li><p>错误捕捉</p>
+</li>
+<li><p>？？？？？</p>
+</li>
+</ul>
+<p>大概的可能就这些，基本的学习教程可以自己看书或者看在线教程</p>
+<p>我们可以练一些数学题来熟悉<code>python</code>，比如质数、水仙花数、公倍数之类的纯数学问题</p>
+<p>然后我们的第一个方向就是爬虫，这个我们就不细讲，我们需要学会的几个库(其实只需要学会其中的几种功能):</p>
+<ul>
+<li>lxml</li>
+<li>BeautifulSoup</li>
+<li>requests</li>
+<li>json(标准库)</li>
+</ul>
+<p>然后学一下HTML的基本知识，再了解一下HTTP的基本知识，基本自己手写爬虫就没有任何问题了，如果想提高效率可以学习多线程或者协程(较难),如果嫌还是太麻烦，可以学习爬虫框架，比如<code>scrapy</code>.</p>
+<h3 id="走向数据挖掘"><a href="#走向数据挖掘" class="headerlink" title="走向数据挖掘"></a>走向数据挖掘</h3><p>首先我们介绍数据分析最基本的三个库:</p>
+<ul>
+<li><p>pandas</p>
+</li>
+<li><p>numpy</p>
+</li>
+<li><p>matplotlib</p>
+</li>
+</ul>
 
       
     </div>
@@ -304,16 +356,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/08/16/Docker学习纪录②/">
-                    Docker学习纪录②
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/08/10/搭建git服务器/">
-                    搭建git服务器
+                <a href="/2018/03/16/词云简单实现/">
+                    词云简单实现
                 </a>
             </div>
         
@@ -325,7 +371,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker中RUN、CMD、ENTRTPOINT的区别"><span class="toc-number">1.</span> <span class="toc-text">docker中RUN、CMD、ENTRTPOINT的区别</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个基本的学习计划-面向数据类"><span class="toc-number">2.</span> <span class="toc-text">一个基本的学习计划(面向数据类)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#走向数据挖掘"><span class="toc-number">2.1.</span> <span class="toc-text">走向数据挖掘</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -361,7 +407,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Docker学习心得①　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"python学习计划(新手向)　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -381,8 +427,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2017/08/10/Docker学习心得①/';
-            this.page.identifier = '2017/08/10/Docker学习心得①/';
+            this.page.url = 'http://yoursite.com/2018/03/17/python学习计划-新手向/';
+            this.page.identifier = '2018/03/17/python学习计划-新手向/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -404,15 +450,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/08/16/Docker学习纪录②/" title="上一篇: Docker学习纪录②">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/08/10/搭建git服务器/" title="下一篇: 搭建git服务器">
+            <a href="/2018/03/16/词云简单实现/" title="下一篇: 词云简单实现">
                 <i class="fa fa-angle-right"></i>
             </a>
         

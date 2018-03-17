@@ -15,22 +15,22 @@
 
 
 
-<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
+<meta name="description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta name="keywords" content="WordCloud,中文分词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词云简单实现">
 <meta property="og:url" content="http://yoursite.com/2018/03/16/词云简单实现/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
+<meta property="og:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/10.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/50.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/100.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/16/词云简单实现/stop_word.png">
-<meta property="og:updated_time" content="2018-03-16T14:18:45.348Z">
+<meta property="og:updated_time" content="2018-03-17T02:33:54.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词云简单实现">
-<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。 实例展示TOP10 TOP50 TOP100">
+<meta name="twitter:description" content="前言对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云wordcloud就是其中一种较为流行的可视化方式。下图就是Solidot3个月新闻的高频词的一个可视化。">
 <meta name="twitter:image" content="http://yoursite.com/2018/03/16/词云简单实现/10.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -290,11 +290,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。<br><a id="more"></a></p>
 <h2 id="实例展示"><a href="#实例展示" class="headerlink" title="实例展示"></a>实例展示</h2><h3 id="TOP10"><a href="#TOP10" class="headerlink" title="TOP10"></a>TOP10</h3><img src="/2018/03/16/词云简单实现/10.png" alt="test" title="test">
 <h3 id="TOP50"><a href="#TOP50" class="headerlink" title="TOP50"></a>TOP50</h3><img src="/2018/03/16/词云简单实现/50.png" alt="test" title="test">
 <h3 id="TOP100"><a href="#TOP100" class="headerlink" title="TOP100"></a>TOP100</h3><img src="/2018/03/16/词云简单实现/100.png" alt="test" title="test">
-<a id="more"></a>
 <h2 id="中文分词简单实现"><a href="#中文分词简单实现" class="headerlink" title="中文分词简单实现"></a>中文分词简单实现</h2><p>经过对比几个流行的python中文分词库，我选择了<a href="https://github.com/fxsjy/jieba" target="_blank" rel="external">jieba</a></p>
 <h3 id="jieba主要模式"><a href="#jieba主要模式" class="headerlink" title="jieba主要模式"></a>jieba主要模式</h3><p>支持三种分词模式：</p>
 <ul>
@@ -331,6 +330,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/03/17/python学习计划-新手向/">
+                    python学习计划(新手向)
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -426,7 +431,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/03/17/python学习计划-新手向/" title="上一篇: python学习计划(新手向)">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -438,7 +445,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/词云简单实现/">词云简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/OpenCV-python的坑/">OpenCV-python的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/liunx全养成①/">liunx全养成①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/python学习计划-新手向/">python学习计划(新手向)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/词云简单实现/">词云简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/OpenCV-python的坑/">OpenCV-python的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/liunx全养成①/">liunx全养成①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
 
 
 

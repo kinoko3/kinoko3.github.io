@@ -247,6 +247,86 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-flask-uwsgi-nginx的部署" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/11/flask-uwsgi-nginx的部署/" class="article-date">
+      <time datetime="2017-10-11T14:39:05.000Z" itemprop="datePublished">2017-10-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>哇，之前写一个<code>flask</code>项目的时候，一直打算部署，看了不少的教程，最后选择了<code>flask</code>+<code>uwsgi</code>+<code>nginx</code>的搭配，然后在Ubuntu server里尝试上线，但是就是不行，一直报错502，一直找不到问题所在，后来在家里的一台烂liunx笔记本尝试上线（一样是Ubuntu），这已经距离我的<code>flask</code>项目写好过了几个月了，然后一次就成功了，一脸蒙蔽，这个教程并没有太多的对于<code>uwsgi</code>和<code>nginx</code>的性能优化之类的，仅仅保留了最基本的配置。不会对配置做过多的解释，如果想知道配置文件的解释，可以自己谷歌或者百度查看<code>uwsgi</code>和<code>nginx</code>的配置文件解释。仅仅做一个备忘录。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><p>nginx配置文件路径在<code>/etc/nginx</code></p>
+<p>nginx配置文件如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">server&#123;</div><div class="line">        listen 80;</div><div class="line">        server_name localhost;</div><div class="line">        charset utf-8;</div><div class="line">        keepalive_timeout 0;</div><div class="line">        client_max_body_size 75M;</div><div class="line">        location / &#123;</div><div class="line">                include uwsgi_params;</div><div class="line">                uwsgi_pass unix:/home/su/upload_file-master/demo.sock;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>server_name</code>为服务器地址，这里因为是本地上线，所以填了本地的地址，这里一个很主要的和<code>uwsgi</code>交互的地方在与<code>uwsgi_pass</code>这个配置选项，链接<code>uwsgi</code>的socket地址，生成这个socket的路径会在<code>uwsgi</code>的配置文件里配置。可以看下面的<code>uwsgi</code>配置。</p>
+<p>这个文件的名字是<code>nginx.conf</code>，尽量不要修改，我们将这个文件放在<code>/etc/nginx/site-enabled/</code>里，然后修改一下<code>/etc/nginx/nginx.conf</code>里的<code>include /etc/nginx/sites-enabled/*.conf</code>这一项。</p>
+<p><img src="http://ouonrxq3b.bkt.clouddn.com/flask-nginx-uwsgi/nginx-conf.png" alt="nginx.conf"></p>
+<p>然后我们检查一下<code>nginx</code>的配置文件正确性，输入命令<code>sudo nginx -t</code>，如果显示:</p>
+<p><img src="http://ouonrxq3b.bkt.clouddn.com/flask-nginx-uwsgi/nginx-test.png" alt="nginx-config"></p>
+<p>就表示<code>nginx</code>配置文件配置正确</p>
+<h3 id="uwsgi-配置"><a href="#uwsgi-配置" class="headerlink" title="uwsgi 配置"></a>uwsgi 配置</h3><p>建议将uwsgi配置文件放在项目根目录下，后缀为<code>.ini</code></p>
+<p>uwsgi配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[uwsgi]</div><div class="line">processes = 8</div><div class="line"></div><div class="line">wsgi-file = /home/su/upload_file-master/demo.py</div><div class="line"></div><div class="line">socket = /home/su/upload_file-master/demo.sock</div><div class="line"></div><div class="line">chmod-socket = 666</div><div class="line">module = demo</div><div class="line">callable = app</div></pre></td></tr></table></figure>
+<p><code>wsgi.file</code>文件为<code>flask</code>的服务器入口，比如哪个文件有像这样的<code>app.run(debug=True, port=9090, host=&quot;0.0.0.0&quot;)</code>（其实就是服务器启动），<code>socket</code>的保存路径就是<code>nginx</code>配置文件中<code>uwsgi_pass</code>的路径，这个路径一定要对。<code>chomd-socket</code>把<code>socket</code>的权限改写成所有人可写可读。</p>
+<blockquote>
+<p>callable选项为flask中的<code>app = Flask(__name__)</code></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/备忘录/">备忘录</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uwsgi/">uwsgi</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-win下的clion配置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1006,74 +1086,6 @@
         <p class="article-more-link">
           <a href="/2017/08/17/Docker学习纪录③/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-python字符串技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/16/python字符串技巧/" class="article-date">
-      <time datetime="2017-08-16T05:42:55.000Z" itemprop="datePublished">2017-08-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/16/python字符串技巧/">python字符串技巧</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <hr>
-<h3 id="python判断字符串是否包含子字符串的方法"><a href="#python判断字符串是否包含子字符串的方法" class="headerlink" title="python判断字符串是否包含子字符串的方法"></a>python判断字符串是否包含子字符串的方法</h3><h4 id="方法①：in方法"><a href="#方法①：in方法" class="headerlink" title="方法①：in方法"></a>方法①：<code>in</code>方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@logging</span></div><div class="line">site = <span class="string">"www.baidu.com"</span></div><div class="line"><span class="keyword">if</span> <span class="string">"baidu"</span> <span class="keyword">in</span> site:</div><div class="line">	print(<span class="string">'site contains baidu'</span>)</div></pre></td></tr></table></figure>
-<p>输出’site contains baidu’.</p>
-<h4 id="方法②：字符串find函数"><a href="#方法②：字符串find函数" class="headerlink" title="方法②：字符串find函数"></a>方法②：字符串<code>find</code>函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"www.baidu.com"</span></div><div class="line"><span class="keyword">if</span> s.find(<span class="string">"baidu"</span>) == <span class="number">-1</span>:</div><div class="line">	print(<span class="string">"no"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	print(<span class="string">"have"</span>)</div></pre></td></tr></table></figure>
-<p>这个find函数是搜索子字符串是否在母字符串中，不在返回-1，在则返回索引值</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习心得/">学习心得</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
