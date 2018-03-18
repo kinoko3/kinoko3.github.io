@@ -178,7 +178,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordCloud/">WordCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文分词/">中文分词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apriori/">Apriori</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Clion/">Clion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataMining/">DataMining</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordCloud/">WordCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/liunx/">liunx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowcsoksR/">shadowcsoksR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwsgi/">uwsgi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文分词/">中文分词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
                     </div>
                 </section>
                 
@@ -246,6 +246,83 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Docker学习纪录③" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/17/Docker学习纪录③/" class="article-date">
+      <time datetime="2017-08-17T02:13:31.000Z" itemprop="datePublished">2017-08-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <hr>
+<h3 id="ENV-设置环境变量"><a href="#ENV-设置环境变量" class="headerlink" title="ENV 设置环境变量"></a>ENV 设置环境变量</h3><p>格式有两种</p>
+<ul>
+<li><code>ENV &lt;key&gt; &lt;value&gt;</code></li>
+<li><code>ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;</code></li>
+</ul>
+<p>RUN中使用环境变量记得加$</p>
+<h3 id="EXPOSE-声明端口"><a href="#EXPOSE-声明端口" class="headerlink" title="EXPOSE 声明端口"></a>EXPOSE 声明端口</h3><p>格式为 <code>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;]</code></p>
+<p>这只是一个声明，并不会因为运行就会开启这个端口的服务</p>
+<p>在运行时候使用<code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code>，这个是在运行时使用的，<code>-p</code>是映射宿主端口和容器端口，而<code>EXPOSE</code>仅仅是声明打算使用什么端口而已，并不会进行端口映射<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习纪录/">学习纪录</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/08/17/Docker学习纪录③/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-python字符串技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -374,7 +451,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/16/Docker学习纪录②/#more">more >></a>
+          <a href="/2017/08/16/Docker学习纪录②/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -516,7 +593,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/10/搭建git服务器/#more">more >></a>
+          <a href="/2017/08/10/搭建git服务器/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -586,7 +663,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/07/docker学习纪录①/#more">more >></a>
+          <a href="/2017/08/07/docker学习纪录①/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -655,7 +732,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/07/树莓派3B折腾纪录③/#more">more >></a>
+          <a href="/2017/08/07/树莓派3B折腾纪录③/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -725,7 +802,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/07/树莓派3B折腾纪录②/#more">more >></a>
+          <a href="/2017/08/07/树莓派3B折腾纪录②/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -796,7 +873,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/08/06/树莓派3B折腾纪录①/#more">more >></a>
+          <a href="/2017/08/06/树莓派3B折腾纪录①/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
