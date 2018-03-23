@@ -272,66 +272,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！</p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！</p>
 <p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
-<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>cv2.imread（），cv2.imshow（），cv2.imwrite（）</code></p>
-<p>cv2.imread(),可以使用以下3个flag:</p>
-<ul>
-<li>cv2.IMREAD_COLOR：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。</li>
-<li>cv2.IMREAD_GRAYSCALE：以灰度模式加载图像</li>
-<li>cv2.IMREAD_UNCHANGED：加载包含Alpha通道的图像</li>
-</ul>
-<p>代号是1,0,-1</p>
-<p><code>img = cv2.imread(&#39;1.jpg&#39;, 0)</code><br>cv2.imshow()</p>
-<ul>
-<li><p>cv2.waitKey（）是一个键盘绑定函数，如果传递0，他将无限期等待键盘输入，敲击后，程序会继续，也可以使用特定的按键。</p>
-</li>
-<li><p>cv2.destroyAllWindows（）只是销毁我们创建的所有窗口。</p>
-</li>
-<li>如果你想销毁任何特定的窗口，使用函数cv2.destroyWindow（）作为参数传递确切的窗口名称.</li>
-<li>如果你先创建了窗口，再创建图片，可以使用cv2.namedWindow(),有两个flag,默认cv2.WINDOW_AUTOSIZE,cv2.WINDOW_NORMAL可以调整窗口大小。</li>
-</ul>
-<p>cv2.imwrite() 保存一张图片 cv2.imwrite(‘messigray.png’,img)</p>
-<h3 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h3><p>一个简单的例子:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'messi5.jpg'</span>,<span class="number">0</span>)</div><div class="line"></div><div class="line">plt.imshow(img, cmap = <span class="string">'gray'</span>, interpolation = <span class="string">'bicubic'</span>)</div><div class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p>matplotlib.pylot.imshow选项:</p>
-<p>cmap <a href="https://matplotlib.org/gallery/color/colormap_reference.html#sphx-glr-gallery-color-colormap-reference-py" target="_blank" rel="external">colormap-example</a></p>
-<ul>
-<li>perceptual uniform sequential colormaps：感知均匀的序列化 colormap</li>
-<li>sequential colormaps：序列化（连续化）色图 colormap； </li>
-<li><ul>
-<li>gray：0-255 级灰度，0：黑色，1：白色，黑底白字；</li>
-</ul>
-</li>
-<li><ul>
-<li>gray_r：翻转 gray 的显示，如果 gray 将图像显示为黑底白字，gray_r 会将其显示为白底黑字；</li>
-</ul>
-</li>
-<li>diverging colormaps：两端发散的色图 colormaps； </li>
-<li><ul>
-<li>seismic</li>
-</ul>
-</li>
-<li>qualitative colormaps：量化（离散化）色图；</li>
-<li>miscellaneous colormaps：其他色图；</li>
-</ul>
-<blockquote>
-<p>其实说白了就是一个色彩参照</p>
-</blockquote>
-<p>interpolation 内插法选择</p>
-<p>有很多选择，比如:</p>
-<ul>
-<li>nearest 最近邻内插</li>
-<li>bilinear 双线性内插</li>
-<li>bicubic 双三次内插</li>
-</ul>
-<h2 id="视频使用"><a href="#视频使用" class="headerlink" title="视频使用"></a>视频使用</h2><p>暂不了解</p>
-<h2 id="绘制函数"><a href="#绘制函数" class="headerlink" title="绘制函数"></a>绘制函数</h2><p>开始之前我们先讲一个问题</p>
-<h3 id="图像通道问题"><a href="#图像通道问题" class="headerlink" title="图像通道问题"></a>图像通道问题</h3><blockquote>
-<p>较难理解，知乎有一个同理问题<a href="https://www.zhihu.com/question/21849710" target="_blank" rel="external">如何通俗易懂地讲解 Photoshop 中的「通道」概念？</a>这个通俗易懂，这个就是彩色图像模型，下面的解释来自<a href="https://blog.csdn.net/chenyusiyuan/article/details/4662783" target="_blank" rel="external">OpenCV学习笔记（7）图像的通道（channels）问题</a></p>
-</blockquote>
-<p>图像的通道只有1,3,4通道，因为我们描述一个像素点，如果是灰度，我们一个通道就可以了，如果一个像素点，有RGB三种颜色来描述它，就是三通道.4通道大概是加一个A通道(RGBA)，透明度，又叫alpha通道.</p>
-
+          
       
     </div>
     
@@ -344,6 +287,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/03/22/Opencv-python全养成/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -390,56 +337,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>一幅图像可以定义成一个二维函数,其中x和y是空间坐标(平面),而在任何一对空间坐标(x,y)处的幅值f成为图像在该点处的强度或者灰度,当x,y和灰度值f是有限的离散数值时, 我们成为该图像为数字图像。</p>
+              <p>一幅图像可以定义成一个二维函数,其中x和y是空间坐标(平面),而在任何一对空间坐标(x,y)处的幅值f成为图像在该点处的强度或者灰度,当x,y和灰度值f是有限的离散数值时, 我们成为该图像为数字图像。</p>
 <blockquote>
 <p>灰度是表明图像明暗的数值，即黑白图像中点的颜色深度，范围一般从0到255，白色为255 ，黑色为0，故黑白图片也称灰度图像。灰度值指的是单个像素点的亮度。灰度值越大表示越亮。</p>
 </blockquote>
-<h2 id="图像形成模型"><a href="#图像形成模型" class="headerlink" title="图像形成模型"></a>图像形成模型</h2><ul>
-<li>0 &lt; f(x, y) &lt; ∞</li>
-</ul>
-<p>函数f(x, y)可以由两个分量来表示:入射分量和反射分量,分别表示为i(x,y),r(x,y),f(x, y) = i(x,y)r(x,y)</p>
-<ul>
-<li><p>0 &lt; i(x, y) &lt; ∞</p>
-</li>
-<li><p>0 &lt; r(x, y) &lt; 1</p>
-</li>
-</ul>
-<p>单色图像在任何坐标(x0, y0)处的强度(灰度)表示为:</p>
-<ul>
-<li>ι = f(x0, y0)</li>
-</ul>
-<p>由上式得取值范围:</p>
-<ul>
-<li>Lmin ≤ ι ≤ Lmax</li>
-</ul>
-<p>区间[Lmin, Lmax]成为灰度级(强度级), 实际情况常常令该区域为[0,L-1],其中ι=0为黑色,ι=L-1在灰度级中为白色。所有中间值是从黑色到白色之间变化的灰度色调。</p>
-<p>python-opencv示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">IN[<span class="number">1</span>]:  <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">        <span class="keyword">import</span> cv2</div><div class="line">        img = cv2.imread(<span class="string">'1.jpg'</span>, <span class="number">0</span>)</div><div class="line">        img.min(), img.max()</div><div class="line">OUT[<span class="number">1</span>]:(<span class="number">27</span>, <span class="number">255</span>)</div></pre></td></tr></table></figure>
-<h2 id="图像内插"><a href="#图像内插" class="headerlink" title="图像内插"></a>图像内插</h2><p>从根本上看，内插是用已知数据来估计未知位置的数值的处理。比如调整图像的大小(收缩和放大)，这是基本的图像重取样方法。</p>
-<ul>
-<li>最近邻内插法</li>
-</ul>
-<p>比如一幅图由500x500放大到750x750，先创建一个750x750的网格，然后缩小和原图像匹配，显然收缩后的750x750网格像素间隔要小于原图像的像素间隔。然后我们在原图像中寻找最接近的像素，并把该像素的灰度赋给750x750网格的新像素。当我们完成对网格中所有点的灰度赋值后，就把图像扩展到原来规定的大小，得到图像。</p>
-<p>这种方法把原图像中最近邻的灰度赋给了每个新位置。</p>
-<ul>
-<li>双线性内插</li>
-</ul>
-<p>我们使用4个最近邻去估计给定位置的灰度，由v(x,y)来表示灰度值，公式为</p>
-<ul>
-<li><p>v(x,y) = ax + by + cxy + d</p>
-</li>
-<li><p>双三次内插</p>
-</li>
-</ul>
-<p>使用16个最近邻点，公式为:</p>
-<ul>
-<li>v(x,y) = ∑(3 i=0)∑(3 j=0)a(ij)x^i*y^j</li>
-</ul>
-<p>双三次内插在保持细节方面比双线性内插要好，商业图像编辑软件标准内插方法，比如Adobe Photoshop</p>
-<blockquote>
-<p>在matplotlib.pylot.imshow的一个选项中,interpolation是选择内插方法</p>
-</blockquote>
-<h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
+          
       
     </div>
     
@@ -452,6 +354,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Image-progressing/">Image progressing</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/03/22/数字图像处理笔记/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

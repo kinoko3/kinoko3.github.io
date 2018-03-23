@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials 入门基本操作cv2.imread（），cv2.imshow（），cv2.imwrite（） cv2.imread(),可以使用以下3个flag:  cv2.IMREAD_COLOR：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。 c">
+<meta name="description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials">
 <meta name="keywords" content="Python,OpenCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV-python全养成">
 <meta property="og:url" content="http://yoursite.com/2018/03/22/Opencv-python全养成/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials 入门基本操作cv2.imread（），cv2.imshow（），cv2.imwrite（） cv2.imread(),可以使用以下3个flag:  cv2.IMREAD_COLOR：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。 c">
+<meta property="og:description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-23T11:59:52.670Z">
+<meta property="og:updated_time" content="2018-03-23T12:45:08.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV-python全养成">
-<meta name="twitter:description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials 入门基本操作cv2.imread（），cv2.imshow（），cv2.imwrite（） cv2.imread(),可以使用以下3个flag:  cv2.IMREAD_COLOR：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。 c">
+<meta name="twitter:description" content="前言中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！ 地址OpenCV-Python Tutorials">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -283,27 +283,29 @@
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！</p>
 <p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
+<a id="more"></a>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>cv2.imread（），cv2.imshow（），cv2.imwrite（）</code></p>
-<p>cv2.imread(),可以使用以下3个flag:</p>
+<p><code>cv2.imread()</code>,可以使用以下3个flag:</p>
 <ul>
-<li>cv2.IMREAD_COLOR：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。</li>
-<li>cv2.IMREAD_GRAYSCALE：以灰度模式加载图像</li>
-<li>cv2.IMREAD_UNCHANGED：加载包含Alpha通道的图像</li>
+<li><code>cv2.IMREAD_COLOR</code>：加载彩色图像。图像的任何透明度都将被忽略。这是默认标志。</li>
+<li><code>cv2.IMREAD_GRAYSCALE</code>：以灰度模式加载图像</li>
+<li><code>cv2.IMREAD_UNCHANGED</code>：加载包含Alpha通道的图像</li>
 </ul>
 <p>代号是1,0,-1</p>
-<p><code>img = cv2.imread(&#39;1.jpg&#39;, 0)</code><br>cv2.imshow()</p>
+<p><code>img = cv2.imread(&#39;1.jpg&#39;, 0)</code></p>
+<p><code>cv2.imshow()</code></p>
 <ul>
-<li><p>cv2.waitKey（）是一个键盘绑定函数，如果传递0，他将无限期等待键盘输入，敲击后，程序会继续，也可以使用特定的按键。</p>
+<li><p><code>cv2.waitKey（）</code>是一个键盘绑定函数，如果传递0，他将无限期等待键盘输入，敲击后，程序会继续，也可以使用特定的按键。</p>
 </li>
-<li><p>cv2.destroyAllWindows（）只是销毁我们创建的所有窗口。</p>
+<li><p><code>cv2.destroyAllWindows（）</code>只是销毁我们创建的所有窗口。</p>
 </li>
-<li>如果你想销毁任何特定的窗口，使用函数cv2.destroyWindow（）作为参数传递确切的窗口名称.</li>
-<li>如果你先创建了窗口，再创建图片，可以使用cv2.namedWindow(),有两个flag,默认cv2.WINDOW_AUTOSIZE,cv2.WINDOW_NORMAL可以调整窗口大小。</li>
+<li>如果你想销毁任何特定的窗口，使用函数<code>cv2.destroyWindow（）</code>作为参数传递确切的窗口名称.</li>
+<li>如果你先创建了窗口，再创建图片，可以使用<code>cv2.namedWindow()</code>,有两个<code>flag</code>,默认<code>cv2.WINDOW_AUTOSIZE</code>,<code>cv2.WINDOW_NORMAL</code>可以调整窗口大小。</li>
 </ul>
-<p>cv2.imwrite() 保存一张图片 cv2.imwrite(‘messigray.png’,img)</p>
+<p><code>cv2.imwrite()</code> 保存一张图片 <code>cv2.imwrite(&#39;messigray.png&#39;,img)</code></p>
 <h3 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h3><p>一个简单的例子:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'messi5.jpg'</span>,<span class="number">0</span>)</div><div class="line"></div><div class="line">plt.imshow(img, cmap = <span class="string">'gray'</span>, interpolation = <span class="string">'bicubic'</span>)</div><div class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p>matplotlib.pylot.imshow选项:</p>
+<p><code>matplotlib.pylot.imshow</code>选项:</p>
 <p>cmap <a href="https://matplotlib.org/gallery/color/colormap_reference.html#sphx-glr-gallery-color-colormap-reference-py" target="_blank" rel="external">colormap-example</a></p>
 <ul>
 <li>perceptual uniform sequential colormaps：感知均匀的序列化 colormap</li>
@@ -340,6 +342,14 @@
 <p>较难理解，知乎有一个同理问题<a href="https://www.zhihu.com/question/21849710" target="_blank" rel="external">如何通俗易懂地讲解 Photoshop 中的「通道」概念？</a>这个通俗易懂，这个就是彩色图像模型，下面的解释来自<a href="https://blog.csdn.net/chenyusiyuan/article/details/4662783" target="_blank" rel="external">OpenCV学习笔记（7）图像的通道（channels）问题</a></p>
 </blockquote>
 <p>图像的通道只有1,3,4通道，因为我们描述一个像素点，如果是灰度，我们一个通道就可以了，如果一个像素点，有RGB三种颜色来描述它，就是三通道.4通道大概是加一个A通道(RGBA)，透明度，又叫alpha通道.</p>
+<h3 id="线段"><a href="#线段" class="headerlink" title="线段"></a>线段</h3><p>传递起始和结束坐标、颜色、厚度<br>比如蓝色的厚度5px的线段<br><code>cv2.line(img,(0,0),(511,511),(255,0,0),5)</code></p>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><p>左上角和右下角的坐标<br><code>cv2.rectangle(img,(384,0),(510,128),(0,255,0),3)</code></p>
+<h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h3><p>中心坐标和半径<br><code>cv2.circle(img,(447,63), 63, (0,0,255), -1)</code></p>
+<h3 id="多边形"><a href="#多边形" class="headerlink" title="多边形"></a>多边形</h3><p>顶点坐标，需要int32类型，将其转换成rowsx1x2的形状的数组，rows为顶点数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pts = np.array([[<span class="number">10</span>,<span class="number">5</span>],[<span class="number">20</span>,<span class="number">30</span>],[<span class="number">70</span>,<span class="number">20</span>],[<span class="number">50</span>,<span class="number">10</span>]], np.int32)</div><div class="line"><span class="comment"># newshape重置参数 行列每个</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>,<span class="number">1</span>,<span class="number">2</span>))</div><div class="line">cv2.polylines(img,[pts],<span class="keyword">True</span>,(<span class="number">0</span>,<span class="number">255</span>,<span class="number">255</span>))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>cv2.polylines用于绘制多组线，line只能绘制一组</p>
+</blockquote>
 
       
     </div>
@@ -366,7 +376,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">2.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本操作"><span class="toc-number">2.1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Matplotlib使用"><span class="toc-number">2.2.</span> <span class="toc-text">Matplotlib使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频使用"><span class="toc-number">3.</span> <span class="toc-text">视频使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制函数"><span class="toc-number">4.</span> <span class="toc-text">绘制函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像通道问题"><span class="toc-number">4.1.</span> <span class="toc-text">图像通道问题</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">2.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本操作"><span class="toc-number">2.1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Matplotlib使用"><span class="toc-number">2.2.</span> <span class="toc-text">Matplotlib使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频使用"><span class="toc-number">3.</span> <span class="toc-text">视频使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制函数"><span class="toc-number">4.</span> <span class="toc-text">绘制函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像通道问题"><span class="toc-number">4.1.</span> <span class="toc-text">图像通道问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线段"><span class="toc-number">4.2.</span> <span class="toc-text">线段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩形"><span class="toc-number">4.3.</span> <span class="toc-text">矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#圆"><span class="toc-number">4.4.</span> <span class="toc-text">圆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多边形"><span class="toc-number">4.5.</span> <span class="toc-text">多边形</span></a></li></ol></li></ol>
         
     </div>
     <style>
