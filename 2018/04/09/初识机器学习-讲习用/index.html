@@ -15,13 +15,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="kinoko3のblog">
-<meta property="og:url" content="http://yoursite.com/tags/React/index.html">
+<meta name="description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 我们来了解一个机器学习里非常重要的概念，代价函数(cost">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识机器学习-线性模型(讲习用)">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
+<meta property="og:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 我们来了解一个机器学习里非常重要的概念，代价函数(cost">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/4.png">
+<meta property="og:updated_time" content="2018-04-10T10:59:11.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kinoko3のblog">
+<meta name="twitter:title" content="初识机器学习-线性模型(讲习用)">
+<meta name="twitter:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 我们来了解一个机器学习里非常重要的概念，代价函数(cost">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -53,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: React | kinoko3のblog</title>
+<title>初识机器学习-线性模型(讲习用) | kinoko3のblog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -63,9 +73,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -249,60 +259,192 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-初识机器学习-讲习用" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/09/17/React学习纪录/" class="archive-article-date">
-      <time datetime="2017-09-17T08:24:19.000Z" itemprop="datePublished">09-17</time>
+    <div class="article-meta">
+      <a href="/2018/04/09/初识机器学习-讲习用/" class="article-date">
+      <time datetime="2018-04-09T14:15:08.000Z" itemprop="datePublished">2018-04-09</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/17/React学习纪录/">React学习纪录</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初识机器学习-线性模型(讲习用)
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习纪录/">学习纪录</a>
-    </div>
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。</p>
+<p>线性模型(linear model)的形式为:</p>
+<p>f($\vec x$) = $\vec w$·$\vec x$ + b</p>
+<p>$\vec w$是每个特征对的权重生成的权重向量</p>
+<p>我们来了解一个机器学习里非常重要的概念，代价函数(cost function)比如我们有一个模型y = $\theta 0$+$\theta 1$x,我们要确定$\theta 0$和$\theta 1$的值</p>
+<p>我们简单的定义几个值:</p>
+<img src="/2018/04/09/初识机器学习-讲习用/1.png" alt="linear_cost_function_1" title="linear_cost_function_1">
+<p>这是一个简单的数据集，我们要使我们的直线尽可能的靠近这些点(拟合):</p>
+<img src="/2018/04/09/初识机器学习-讲习用/2.png" alt="linear_cost_function_2" title="linear_cost_function_2">
+<p>我们如何评定？拿f(x) 和y比较，我们要使这两个的值的差异为最小，这个就是一个误差最小化问题，</p>
+<p>我们拿每一个误差相加平方，得公式(求误差均值):$\frac{1}{2m}\sum_{i=1}^m(f(x)^i - y^i)^2$</p>
+<p><code>cost function</code>和模型的对比:</p>
+<img src="/2018/04/09/初识机器学习-讲习用/3.png" alt="cost_function" title="cost_function">
+<blockquote>
+<p>2主要用来化掉该式偏导后得出的常数</p>
+</blockquote>
+<p>上面仅仅是一个特征的代价函数，下面是两个特征的代价函数:</p>
+<img src="/2018/04/09/初识机器学习-讲习用/4.png" alt="double_cost_function" title="double_cost_function">
+<p>我们如何求到最小值，现在来讲解两种方法，<code>最小二乘法</code>和<code>梯度下降法</code>,</p>
+<p>最小二乘法:</p>
+<p>我们对式内的特征权重们进行偏导，然后对偏导后的式子等于0，就可以求出最优解的闭式解。<br>这是直接求出最优解的一个方法，我们重点讲一下梯度下降(Gradient Descent):</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/04/09/Vue从零养成/">
+                    Vue从零养成
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"初识机器学习-线性模型(讲习用)　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
   
-  
-    </div></section>
-  
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2018/04/09/初识机器学习-讲习用/';
+            this.page.identifier = '2018/04/09/初识机器学习-讲习用/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//kinoko3.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/04/09/Vue从零养成/" title="下一篇: Vue从零养成">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/初识机器学习-讲习用/">初识机器学习-线性模型(讲习用)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/Vue从零养成/">Vue从零养成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/Opencv-python全养成/">OpenCV-python全养成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/数字图像处理笔记/">数字图像处理笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/数据挖掘的职业规划/">DataMining的职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/python学习计划-新手向/">python学习计划(数据分析新手向)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/词云简单实现/">词云简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/OpenCV-python的坑/">OpenCV-python的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/liunx全养成①/">liunx全养成①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
