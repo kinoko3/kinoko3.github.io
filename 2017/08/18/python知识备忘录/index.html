@@ -300,13 +300,13 @@
           
         <hr>
 <h4 id="生成requirement文件"><a href="#生成requirement文件" class="headerlink" title="生成requirement文件"></a>生成requirement文件</h4><p>在当前目录生成<code>requirements</code>文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> pip freeze &gt; requirements.txt</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
 <p>从<code>requirements</code>安装库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> pip install -r requirements.txt</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
 <p>pip安装时有一个不保留缓存的参数<code>--no-cache-dir</code></p>
 <h4 id="找到site-packages文件夹"><a href="#找到site-packages文件夹" class="headerlink" title="找到site-packages文件夹"></a>找到site-packages文件夹</h4><p>因为我用brew安装的python3，所以那个路径深似海啊，里面存放了我们的pip安装的一些第三方库</p>
 <p>我们可以在python交互模式里面输入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> site; site.getsitepackages()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> site; site.getsitepackages()</span><br></pre></td></tr></table></figure>
 <p>就出来路径了</p>
 
       

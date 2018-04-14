@@ -311,27 +311,27 @@
 </ul>
 </blockquote>
 <p>命令行的操作使用windows10下的console emulator(所以所有的命令都通配Liunx，但是要注意路径)<br>npm国内安装会稍微慢，如果嫌慢可以科学上网</p>
-<h3 id="Webpack了解"><a href="#Webpack了解" class="headerlink" title="Webpack了解"></a>Webpack了解</h3><p><a href="http://zhaoda.net/webpack-handbook/module-system.html" target="_blank" rel="external">webpack中文文档</a></p>
-<h3 id="scss了解"><a href="#scss了解" class="headerlink" title="scss了解"></a>scss了解</h3><p><a href="https://www.sass.hk/" target="_blank" rel="external">scss中文网</a></p>
+<h3 id="Webpack了解"><a href="#Webpack了解" class="headerlink" title="Webpack了解"></a>Webpack了解</h3><p><a href="http://zhaoda.net/webpack-handbook/module-system.html" target="_blank" rel="noopener">webpack中文文档</a></p>
+<h3 id="scss了解"><a href="#scss了解" class="headerlink" title="scss了解"></a>scss了解</h3><p><a href="https://www.sass.hk/" target="_blank" rel="noopener">scss中文网</a></p>
 <h2 id="Vue-cli的基础使用"><a href="#Vue-cli的基础使用" class="headerlink" title="Vue-cli的基础使用"></a>Vue-cli的基础使用</h2><p>首先，对web开发三巨头(HTML,CSS,JavaScript)还不熟练的，可以单网页练习使用<code>Vue</code>,但是我们可以使用官方推荐的脚手架，脚手架使用<code>webpack</code>可以直接打包，官方帮助我们设定了<code>webpack</code>的打包文件，免去我们编写<code>webpack</code>配置的痛苦，我们可以专心开发<code>Vue</code>的组件。</p>
 <p>对于<code>npm</code>的本地和全局安装，反正我喜欢本地安装(python virtualenv的后遗症)，我们安装<code>Vue-Cli</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-cli --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-cli --save-dev</span><br></pre></td></tr></table></figure>
 <p>我们初始化一个<code>webpack</code>模板:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./node_modules/.bin/vue init webpack my-project</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/vue init webpack my-project</span><br></pre></td></tr></table></figure>
 <p><code>my-project</code>是我们项目的名字</p>
 <p>接下来会有一大堆设置的东西，如果看不懂直接一路回车跳过</p>
 <p>进入我们的项目</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd my-project</div></pre></td></tr></table></figure>
-<p>项目目录:<img src="/2018/04/09/Vue从零养成/1.png" alt="dir" title="dir"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
+<p>项目目录:<img src="/2018/04/09/Vue从零养成/1.png" title="dir"></p>
 <p>然后跑一下，启动命令<code>npm start</code></p>
 <blockquote>
 <p>npm 命令的自定义可以在package.json里面的<code>scripts</code>键值看到，默认的命令重写是:<br>“scripts”: {<br>   “dev”: “webpack-dev-server –inline –progress –config build/webpack.dev.conf.js”,<br>   “start”: “npm run dev”,<br>   “unit”: “jest –config test/unit/jest.conf.js –coverage”,<br>   “e2e”: “node test/e2e/runner.js”,<br>   “test”: “npm run unit &amp;&amp; npm run e2e”,<br>   “build”: “node build/build.js”<br> },<br>里面我们可以很OK的看到，其实npm start是等价于npm run dev的。</p>
 </blockquote>
 <p>我们启动的这个命令是<code>热重载</code>，是<code>webpack</code>的一个非常牛逼的功能，他会启动一个简单的server，你每次改代码它都会实时显示出来。主要细节可以baidu or Google</p>
 <p>命令启动完成后，我们得到一个本地服务器地址，访问它:</p>
-<img src="/2018/04/09/Vue从零养成/2.png" alt="server_url" title="server_url">
+<img src="/2018/04/09/Vue从零养成/2.png" title="server_url">
 <p>得到hello world界面:</p>
-<img src="/2018/04/09/Vue从零养成/3.png" alt="hello world" title="hello world">
+<img src="/2018/04/09/Vue从零养成/3.png" title="hello world">
 <p>简单的<code>vue-cli</code>就搭建好了</p>
 
       

@@ -291,18 +291,18 @@
 <p>$\vec w$是每个特征对的权重生成的权重向量</p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>我们来了解一个机器学习里非常重要的概念，代价函数(cost function)比如我们有一个模型y = $\theta 0$+$\theta 1$x,我们要确定$\theta 0$和$\theta 1$的值</p>
 <p>我们简单的定义几个值:</p>
-<img src="/2018/04/09/初识机器学习-讲习用/1.png" alt="linear_cost_function_1" title="linear_cost_function_1">
+<img src="/2018/04/09/初识机器学习-讲习用/1.png" title="linear_cost_function_1">
 <p>这是一个简单的数据集，我们要使我们的直线尽可能的靠近这些点(拟合):</p>
-<img src="/2018/04/09/初识机器学习-讲习用/2.png" alt="linear_cost_function_2" title="linear_cost_function_2">
+<img src="/2018/04/09/初识机器学习-讲习用/2.png" title="linear_cost_function_2">
 <p>我们如何评定？拿f(x) 和y比较，我们要使这两个的值的差异为最小，这个就是一个误差最小化问题，</p>
 <p>我们拿每一个误差相加平方，得公式(求误差均值):$\frac{1}{2m}\sum_{i=1}^m(f(x)^i - y^i)^2$</p>
 <p><code>cost function</code>和模型的对比:</p>
-<img src="/2018/04/09/初识机器学习-讲习用/3.png" alt="cost_function" title="cost_function">
+<img src="/2018/04/09/初识机器学习-讲习用/3.png" title="cost_function">
 <blockquote>
 <p>2主要用来化掉该式偏导后得出的常数</p>
 </blockquote>
 <p>上面仅仅是一个特征的代价函数，下面是两个特征的代价函数:</p>
-<img src="/2018/04/09/初识机器学习-讲习用/4.png" alt="double_cost_function" title="double_cost_function">
+<img src="/2018/04/09/初识机器学习-讲习用/4.png" title="double_cost_function">
 <h2 id="代价函数求最优解"><a href="#代价函数求最优解" class="headerlink" title="代价函数求最优解"></a>代价函数求最优解</h2><p>我们如何求到最小值，现在来讲解两种方法，<code>最小二乘法</code>和<code>梯度下降法</code>,</p>
 <p>我们回忆一下导数的意义:</p>
 <p>导数反映的是函数y=f(x)在某一点处沿x轴正方向的变化率。再强调一遍，是函数f(x)在x轴上某一点处沿着x轴正方向的变化率/变化趋势。直观地看，也就是在x轴上某一点处，如果f’(x)&gt;0，说明f(x)的函数值在x点沿x轴正方向是趋于增加的；如果f’(x)&lt;0，说明f(x)的函数值在x点沿x轴正方向是趋于减少的。</p>
@@ -312,7 +312,10 @@
 <p>我们对式内的特征进行偏导，然后对偏导后的式子等于0，就可以求出每个特征权重最优解的<code>闭式解</code>。<br>这是直接求出最优解的一个方法，我们重点讲一下梯度下降(Gradient Descent):</p>
 <p>梯度下降(Gradient Descent):</p>
 <p>公式:</p>
-<img src="/2018/04/09/初识机器学习-讲习用/5.png" alt="Gradient_Descent_1} 我们反复执行这个公式，直到收敛，这个公式怎么来的呢？？$\alpha$是`学习速率`，就是我们每一次收敛时候所走的步数。 一个收敛的例子: {% asset_img 6.png Gradient_Descent" title="Gradient_Descent_1} 我们反复执行这个公式，直到收敛，这个公式怎么来的呢？？$\alpha$是`学习速率`，就是我们每一次收敛时候所走的步数。 一个收敛的例子: {% asset_img 6.png Gradient_Descent">
+<img src="/2018/04/09/初识机器学习-讲习用/5.png" title="Gradient_Descent_1">
+<p>我们反复执行这个公式，直到收敛，这个公式怎么来的呢？？$\alpha$是<code>学习速率</code>，就是我们每一次收敛时候所走的步数。</p>
+<p>一个收敛的例子:</p>
+<img src="/2018/04/09/初识机器学习-讲习用/6.png" title="Gradient_Descent">
 
       
     </div>
@@ -385,27 +388,27 @@
 </ul>
 </blockquote>
 <p>命令行的操作使用windows10下的console emulator(所以所有的命令都通配Liunx，但是要注意路径)<br>npm国内安装会稍微慢，如果嫌慢可以科学上网</p>
-<h3 id="Webpack了解"><a href="#Webpack了解" class="headerlink" title="Webpack了解"></a>Webpack了解</h3><p><a href="http://zhaoda.net/webpack-handbook/module-system.html" target="_blank" rel="external">webpack中文文档</a></p>
-<h3 id="scss了解"><a href="#scss了解" class="headerlink" title="scss了解"></a>scss了解</h3><p><a href="https://www.sass.hk/" target="_blank" rel="external">scss中文网</a></p>
+<h3 id="Webpack了解"><a href="#Webpack了解" class="headerlink" title="Webpack了解"></a>Webpack了解</h3><p><a href="http://zhaoda.net/webpack-handbook/module-system.html" target="_blank" rel="noopener">webpack中文文档</a></p>
+<h3 id="scss了解"><a href="#scss了解" class="headerlink" title="scss了解"></a>scss了解</h3><p><a href="https://www.sass.hk/" target="_blank" rel="noopener">scss中文网</a></p>
 <h2 id="Vue-cli的基础使用"><a href="#Vue-cli的基础使用" class="headerlink" title="Vue-cli的基础使用"></a>Vue-cli的基础使用</h2><p>首先，对web开发三巨头(HTML,CSS,JavaScript)还不熟练的，可以单网页练习使用<code>Vue</code>,但是我们可以使用官方推荐的脚手架，脚手架使用<code>webpack</code>可以直接打包，官方帮助我们设定了<code>webpack</code>的打包文件，免去我们编写<code>webpack</code>配置的痛苦，我们可以专心开发<code>Vue</code>的组件。</p>
 <p>对于<code>npm</code>的本地和全局安装，反正我喜欢本地安装(python virtualenv的后遗症)，我们安装<code>Vue-Cli</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-cli --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-cli --save-dev</span><br></pre></td></tr></table></figure>
 <p>我们初始化一个<code>webpack</code>模板:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./node_modules/.bin/vue init webpack my-project</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/vue init webpack my-project</span><br></pre></td></tr></table></figure>
 <p><code>my-project</code>是我们项目的名字</p>
 <p>接下来会有一大堆设置的东西，如果看不懂直接一路回车跳过</p>
 <p>进入我们的项目</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd my-project</div></pre></td></tr></table></figure>
-<p>项目目录:<img src="/2018/04/09/Vue从零养成/1.png" alt="dir" title="dir"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
+<p>项目目录:<img src="/2018/04/09/Vue从零养成/1.png" title="dir"></p>
 <p>然后跑一下，启动命令<code>npm start</code></p>
 <blockquote>
 <p>npm 命令的自定义可以在package.json里面的<code>scripts</code>键值看到，默认的命令重写是:<br>“scripts”: {<br>   “dev”: “webpack-dev-server –inline –progress –config build/webpack.dev.conf.js”,<br>   “start”: “npm run dev”,<br>   “unit”: “jest –config test/unit/jest.conf.js –coverage”,<br>   “e2e”: “node test/e2e/runner.js”,<br>   “test”: “npm run unit &amp;&amp; npm run e2e”,<br>   “build”: “node build/build.js”<br> },<br>里面我们可以很OK的看到，其实npm start是等价于npm run dev的。</p>
 </blockquote>
 <p>我们启动的这个命令是<code>热重载</code>，是<code>webpack</code>的一个非常牛逼的功能，他会启动一个简单的server，你每次改代码它都会实时显示出来。主要细节可以baidu or Google</p>
 <p>命令启动完成后，我们得到一个本地服务器地址，访问它:</p>
-<img src="/2018/04/09/Vue从零养成/2.png" alt="server_url" title="server_url">
+<img src="/2018/04/09/Vue从零养成/2.png" title="server_url">
 <p>得到hello world界面:</p>
-<img src="/2018/04/09/Vue从零养成/3.png" alt="hello world" title="hello world">
+<img src="/2018/04/09/Vue从零养成/3.png" title="hello world">
 <p>简单的<code>vue-cli</code>就搭建好了</p>
 
       
@@ -467,7 +470,7 @@
       
           
               <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！</p>
-<p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
+<p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="noopener">OpenCV-Python Tutorials</a></p>
           
       
     </div>
@@ -729,7 +732,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="external">Solidot</a>3个月新闻的高频词的一个可视化。<br>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于数据挖掘来说，并不都是巨量的数据集和复杂而抽象的数学模型，有的时候，我们也需要直观的图形来表示，对于文本的数据分析来说，词云<code>wordcloud</code>就是其中一种较为流行的可视化方式。下图就是<a href="https://www.solidot.org/" target="_blank" rel="noopener">Solidot</a>3个月新闻的高频词的一个可视化。<br>
           
       
     </div>
@@ -917,7 +920,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>做数据分析首先需要数据集进行分析，但是我们没有大规模的数据集，可以采用公开的数据集，我们现在做的是一个关联分析的推荐系统，有一个非常出名的电影数据测试集- <a href="https://grouplens.org/datasets/movielens/" target="_blank" rel="external">Moivelens</a>.<br>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>做数据分析首先需要数据集进行分析，但是我们没有大规模的数据集，可以采用公开的数据集，我们现在做的是一个关联分析的推荐系统，有一个非常出名的电影数据测试集- <a href="https://grouplens.org/datasets/movielens/" target="_blank" rel="noopener">Moivelens</a>.<br>
           
       
     </div>

@@ -300,24 +300,24 @@
           
         <hr>
 <h3 id="安装好系统之后的一点折腾"><a href="#安装好系统之后的一点折腾" class="headerlink" title="安装好系统之后的一点折腾"></a>安装好系统之后的一点折腾</h3><h4 id="更改ssh密码"><a href="#更改ssh密码" class="headerlink" title="更改ssh密码"></a>更改ssh密码</h4><p>登录上之后有个警告,告诉我们需要更改默认密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SSH is enabled and the default password for the 'pi' user has not been changed.</div><div class="line">This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SSH is enabled and the default password for the 'pi' user has not been changed.</span><br><span class="line">This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>我们输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">passswd</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passswd</span><br></pre></td></tr></table></figure>
 <p>根据提示输入当前密码，新密码就好了</p>
 <blockquote>
 <p>在哪个用户下输入passwd就更改哪个用户的密码，sudo passwd更改的是root的密码</p>
 </blockquote>
 <h4 id="安装python3"><a href="#安装python3" class="headerlink" title="安装python3"></a>安装python3</h4><p>RASPBIAN lite版系统自带只有python2，没有python3</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python3</div><div class="line">-shell: python3: command not found</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">-shell: python3: command not found</span><br></pre></td></tr></table></figure>
 <p>我们下载py3的包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</span><br></pre></td></tr></table></figure>
 <p>我们使用wget命令来下载，下载路径是当前路径，py3的版本可以自己选择</p>
 <blockquote>
 <p>由于大家都知道的原因，速度会极慢。。。等等就好</p>
 </blockquote>
 <p>输入命令解压</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf Python-3.6.2.tar.xz</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Python-3.6.2.tar.xz</span><br></pre></td></tr></table></figure>
 <p>tar是liunx是压缩命令，-x是解压缩或打包的功能, -v显示正在处理的文件名，-f后面接要被处理的文件名</p>
 <p>然后cd进解压出来的文件夹里，README.rst是教程，(先偷偷安装一个vim)</p>
 <p>教程提示我们</p>
@@ -331,7 +331,7 @@ sudo make install
 <p>因为这样直接编译，pip安装第三方库的时候会出现ssl错误，所以我们要先改动一些配置文件</p>
 <p>先输入命令 sudo apt-get install libssl-dev安装</p>
 <p>然后我们进入刚刚解压出来的python文件夹，使用vim Modules/Setup打开文件，把这几句的注释去掉（文件默认前面是带有#号的）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">_socket socketmodule.c timemodule.c</div><div class="line"></div><div class="line">_ssl _ssl.c \</div><div class="line">-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \</div><div class="line"><span class="meta">-L$</span>(SSL)/lib -lssl -lcrypto</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_socket socketmodule.c timemodule.c</span><br><span class="line"></span><br><span class="line">_ssl _ssl.c \</span><br><span class="line">-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \</span><br><span class="line"><span class="meta">-L$</span>(SSL)/lib -lssl -lcrypto</span><br></pre></td></tr></table></figure>
 <p>然后我们才开始编译（又是一段可怕的时光，所以我想用docker。。。。）</p>
 
       

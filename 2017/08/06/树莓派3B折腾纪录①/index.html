@@ -306,7 +306,7 @@
           
         <h2 id="树莓派系统的安装"><a href="#树莓派系统的安装" class="headerlink" title="树莓派系统的安装"></a>树莓派系统的安装</h2><hr>
 <h3 id="系统选择"><a href="#系统选择" class="headerlink" title="系统选择"></a>系统选择</h3><p>我的树莓派3B是在某宝上买的，买的是没有带系统的版本（没有买带有TF卡套餐的），就需要自己装一个系统，折腾树莓派以后自己装系统应该会成为常态的</p>
-<p>官网的下载地址: <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">地址</a></p>
+<p>官网的下载地址: <a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener">地址</a></p>
 <p><img src="http://ouonrxq3b.bkt.clouddn.com/1.png" alt="noobs"></p>
 <a id="more"></a>
 <p>NOOBS是官方提供的安装器，左边的完整版自带离线安装包RASPBIAN，可以通过NOOBS安装器安装，右边的lite版是线上安装模式，需要通过从网上下载镜像来安装。NOOBS适合不习惯命令行的小白</p>
@@ -327,16 +327,16 @@
 <p>接下来我们可以ssh登录了，在windows环境下可以使用xshell或者puttyport进行ssh登录</p>
 <p>我使用mac环境（liunx同理）</p>
 <p>在终端输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> ssh pi@192.168.0.106</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh pi@192.168.0.106</span><br></pre></td></tr></table></figure>
 <p>192.168.0.106是我树莓派在路由器的地址</p>
 <p>然后会有交互显示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host '192.168.0.106 (192.168.0.106)' can't be established.</div><div class="line">ECDSA key fingerprint is SHA256:7gNwDQEdPve2Cjk6eDqQhxvi5X/ZqDRSVKpv38T7Gr8.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host '192.168.0.106 (192.168.0.106)' can't be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:7gNwDQEdPve2Cjk6eDqQhxvi5X/ZqDRSVKpv38T7Gr8.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br></pre></td></tr></table></figure>
 <p>输入yes就好了</p>
 <blockquote>
 <p>如果你重新刷了系统，然后树莓派的地址和之前的一样，就会触发Host key verification failed错误,mac环境下是删除.shh里面know_hosts文件的ip密钥纪录</p>
 </blockquote>
 <p>之后会出现输入密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pi@192.168.0.106's password:</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@192.168.0.106's password:</span><br></pre></td></tr></table></figure>
 <p>默认密码是raspberry</p>
 <p>到此，我们就使用ssh登录上了树莓派</p>
 

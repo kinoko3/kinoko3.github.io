@@ -322,12 +322,12 @@
 </li>
 </ul>
 <p>有时候我们需要一下子清理掉全部运行中的容器:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker stop $(docker ps -q)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker stop $(docker ps -q)</span><br></pre></td></tr></table></figure>
 <p>然后删除掉全部容器：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker stop $(docker ps -aq)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker stop $(docker ps -aq)</span><br></pre></td></tr></table></figure>
 <p>一条命令实现：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</div></pre></td></tr></table></figure>
-<p>放一张图，docker command，（图出自<a href="http://seanlook.com/2014/10/31/docker-command-best-use-1/" target="_blank" rel="external">原图链接</a>）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<p>放一张图，docker command，（图出自<a href="http://seanlook.com/2014/10/31/docker-command-best-use-1/" target="_blank" rel="noopener">原图链接</a>）</p>
 <p><img src="http://ouonrxq3b.bkt.clouddn.com/docker_cli_stage.png" alt="docker command"></p>
 
       

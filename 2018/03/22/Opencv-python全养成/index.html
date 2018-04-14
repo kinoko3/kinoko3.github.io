@@ -295,7 +295,7 @@
       
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中文的opencv-python内容太少了！！！！没办法只好啃英文文档了,官方文档saikou！！！</p>
-<p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="external">OpenCV-Python Tutorials</a></p>
+<p>地址<a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_tutorials.html" target="_blank" rel="noopener">OpenCV-Python Tutorials</a></p>
 <a id="more"></a>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>cv2.imread（），cv2.imshow（），cv2.imwrite（）</code></p>
 <p><code>cv2.imread()</code>,可以使用以下3个flag:</p>
@@ -317,9 +317,9 @@
 </ul>
 <p><code>cv2.imwrite()</code> 保存一张图片 <code>cv2.imwrite(&#39;messigray.png&#39;,img)</code></p>
 <h3 id="Matplotlib使用"><a href="#Matplotlib使用" class="headerlink" title="Matplotlib使用"></a>Matplotlib使用</h3><p>一个简单的例子:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'messi5.jpg'</span>,<span class="number">0</span>)</div><div class="line"></div><div class="line">plt.imshow(img, cmap = <span class="string">'gray'</span>, interpolation = <span class="string">'bicubic'</span>)</div><div class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'messi5.jpg'</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">plt.imshow(img, cmap = <span class="string">'gray'</span>, interpolation = <span class="string">'bicubic'</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><code>matplotlib.pylot.imshow</code>选项:</p>
-<p>cmap <a href="https://matplotlib.org/gallery/color/colormap_reference.html#sphx-glr-gallery-color-colormap-reference-py" target="_blank" rel="external">colormap-example</a></p>
+<p>cmap <a href="https://matplotlib.org/gallery/color/colormap_reference.html#sphx-glr-gallery-color-colormap-reference-py" target="_blank" rel="noopener">colormap-example</a></p>
 <ul>
 <li>perceptual uniform sequential colormaps：感知均匀的序列化 colormap</li>
 <li>sequential colormaps：序列化（连续化）色图 colormap； </li>
@@ -352,14 +352,14 @@
 <h2 id="视频使用"><a href="#视频使用" class="headerlink" title="视频使用"></a>视频使用</h2><p>暂不了解</p>
 <h2 id="绘制函数"><a href="#绘制函数" class="headerlink" title="绘制函数"></a>绘制函数</h2><p>开始之前我们先讲一个问题</p>
 <h3 id="图像通道问题"><a href="#图像通道问题" class="headerlink" title="图像通道问题"></a>图像通道问题</h3><blockquote>
-<p>较难理解，知乎有一个同理问题<a href="https://www.zhihu.com/question/21849710" target="_blank" rel="external">如何通俗易懂地讲解 Photoshop 中的「通道」概念？</a>这个通俗易懂，这个就是彩色图像模型，下面的解释来自<a href="https://blog.csdn.net/chenyusiyuan/article/details/4662783" target="_blank" rel="external">OpenCV学习笔记（7）图像的通道（channels）问题</a></p>
+<p>较难理解，知乎有一个同理问题<a href="https://www.zhihu.com/question/21849710" target="_blank" rel="noopener">如何通俗易懂地讲解 Photoshop 中的「通道」概念？</a>这个通俗易懂，这个就是彩色图像模型，下面的解释来自<a href="https://blog.csdn.net/chenyusiyuan/article/details/4662783" target="_blank" rel="noopener">OpenCV学习笔记（7）图像的通道（channels）问题</a></p>
 </blockquote>
 <p>图像的通道只有1,3,4通道，因为我们描述一个像素点，如果是灰度，我们一个通道就可以了，如果一个像素点，有RGB三种颜色来描述它，就是三通道.4通道大概是加一个A通道(RGBA)，透明度，又叫alpha通道.</p>
 <h3 id="线段"><a href="#线段" class="headerlink" title="线段"></a>线段</h3><p>传递起始和结束坐标、颜色、厚度<br>比如蓝色的厚度5px的线段<br><code>cv2.line(img,(0,0),(511,511),(255,0,0),5)</code></p>
 <h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><p>左上角和右下角的坐标<br><code>cv2.rectangle(img,(384,0),(510,128),(0,255,0),3)</code></p>
 <h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h3><p>中心坐标和半径<br><code>cv2.circle(img,(447,63), 63, (0,0,255), -1)</code></p>
 <h3 id="多边形"><a href="#多边形" class="headerlink" title="多边形"></a>多边形</h3><p>顶点坐标，需要int32类型，将其转换成rowsx1x2的形状的数组，rows为顶点数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pts = np.array([[<span class="number">10</span>,<span class="number">5</span>],[<span class="number">20</span>,<span class="number">30</span>],[<span class="number">70</span>,<span class="number">20</span>],[<span class="number">50</span>,<span class="number">10</span>]], np.int32)</div><div class="line"><span class="comment"># newshape重置参数 行列每个</span></div><div class="line">pts = pts.reshape((<span class="number">-1</span>,<span class="number">1</span>,<span class="number">2</span>))</div><div class="line">cv2.polylines(img,[pts],<span class="keyword">True</span>,(<span class="number">0</span>,<span class="number">255</span>,<span class="number">255</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pts = np.array([[<span class="number">10</span>,<span class="number">5</span>],[<span class="number">20</span>,<span class="number">30</span>],[<span class="number">70</span>,<span class="number">20</span>],[<span class="number">50</span>,<span class="number">10</span>]], np.int32)</span><br><span class="line"><span class="comment"># newshape重置参数 行列每个</span></span><br><span class="line">pts = pts.reshape((<span class="number">-1</span>,<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line">cv2.polylines(img,[pts],<span class="keyword">True</span>,(<span class="number">0</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>cv2.polylines用于绘制多组线，line只能绘制一组</p>
 </blockquote>

@@ -302,8 +302,8 @@
 <h3 id="Dockerfile定制镜像"><a href="#Dockerfile定制镜像" class="headerlink" title="Dockerfile定制镜像"></a>Dockerfile定制镜像</h3><blockquote>
 <p>大量引用Docker–从入门到实践的内容</p>
 </blockquote>
-<p>Gitbook地址：<a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="external">Docker–从入门到实践</a></p>
-<h3 id="FROM指定基础镜像"><a href="#FROM指定基础镜像" class="headerlink" title="FROM指定基础镜像"></a>FROM指定基础镜像</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> nginx</div></pre></td></tr></table></figure>
+<p>Gitbook地址：<a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker–从入门到实践</a></p>
+<h3 id="FROM指定基础镜像"><a href="#FROM指定基础镜像" class="headerlink" title="FROM指定基础镜像"></a>FROM指定基础镜像</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br></pre></td></tr></table></figure>
 <p>指定一个<code>nginx</code>基础镜像</p>
 <h3 id="RUN执行命令"><a href="#RUN执行命令" class="headerlink" title="RUN执行命令"></a>RUN执行命令</h3><ul>
 <li>shell格式</li>
@@ -311,7 +311,7 @@
 </ul>
 <a id="more"></a>
 <p>dockerfile一条指令建立一层，<code>RUN</code>指令应该这么写</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> debian:jessie</div><div class="line"></div><div class="line"><span class="keyword">RUN</span> buildDeps='gcc libc6-dev make' \</div><div class="line">    &amp;&amp; apt-get update \</div><div class="line">    &amp;&amp; apt-get install -y $buildDeps \</div><div class="line">    &amp;&amp; wget -O redis.tar.gz "http://download.redis.io/releases/redis-3.2.5.tar.gz" \</div><div class="line">    &amp;&amp; mkdir -p /usr/src/redis \</div><div class="line">    &amp;&amp; tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \</div><div class="line">    &amp;&amp; make -C /usr/src/redis \</div><div class="line">    &amp;&amp; make -C /usr/src/redis install \</div><div class="line">    &amp;&amp; rm -rf /var/lib/apt/lists/* \</div><div class="line">    &amp;&amp; rm redis.tar.gz \</div><div class="line">    &amp;&amp; rm -r /usr/src/redis \</div><div class="line">    &amp;&amp; apt-get purge -y --auto-remove $buildDeps</div></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> debian:jessie</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> buildDeps='gcc libc6-dev make' \</span><br><span class="line">    &amp;&amp; apt-get update \</span><br><span class="line">    &amp;&amp; apt-get install -y $buildDeps \</span><br><span class="line">    &amp;&amp; wget -O redis.tar.gz "http://download.redis.io/releases/redis-3.2.5.tar.gz" \</span><br><span class="line">    &amp;&amp; mkdir -p /usr/src/redis \</span><br><span class="line">    &amp;&amp; tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis install \</span><br><span class="line">    &amp;&amp; rm -rf /var/lib/apt/lists/* \</span><br><span class="line">    &amp;&amp; rm redis.tar.gz \</span><br><span class="line">    &amp;&amp; rm -r /usr/src/redis \</span><br><span class="line">    &amp;&amp; apt-get purge -y --auto-remove $buildDeps</span><br></pre></td></tr></table></figure>
 <p>而不是一行一个<code>RUN</code></p>
 <h3 id="镜像上下文（context）"><a href="#镜像上下文（context）" class="headerlink" title="镜像上下文（context）"></a>镜像上下文（context）</h3><p>如果注意，会看到 <code>docker build</code> 命令最后有一个 <code>.</code>。<code>.</code>表示当前目录</p>
 <p>为什么呢？？</p>
@@ -319,7 +319,7 @@
 <p>如何才能让服务端获得本地文件呢？？</p>
 <p>这就引入了上下文的概念。当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker 引擎收到这个上下文包后，展开就会获得构建镜像所需的一切文件。</p>
 <p>比如</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">COPY</span> ./package.json /app/</div></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span> ./package.json /app/</span><br></pre></td></tr></table></figure>
 <p>这并不是要复制执行 <code>docker build</code> 命令所在的目录下的 package.json，也不是复制 Dockerfile 所在目录下的 package.json，而是复制 上下文（context） 目录下的 package.json</p>
 <h3 id="Dockerfile-指令"><a href="#Dockerfile-指令" class="headerlink" title="Dockerfile 指令"></a>Dockerfile 指令</h3><h3 id="COPY-复制文件"><a href="#COPY-复制文件" class="headerlink" title="COPY 复制文件"></a>COPY 复制文件</h3><p>格式</p>
 <ul>
@@ -327,11 +327,11 @@
 <li>COPY [“&lt;源路径1&gt;”,… “&lt;目标路径&gt;”]</li>
 </ul>
 <p><code>COPY</code> 指令将从构建上下文目录中 &lt;源路径&gt; 的文件/目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">COPY</span> package.json /usr/src/app/</div></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span> package.json /usr/src/app/</span><br></pre></td></tr></table></figure>
 <h3 id="ADD-更高级的复制文件"><a href="#ADD-更高级的复制文件" class="headerlink" title="ADD 更高级的复制文件"></a>ADD 更高级的复制文件</h3><p>格式和<code>COPY</code>差不多</p>
 <p>这个只适合自解压的场合</p>
 <p>如果 &lt;源路径&gt; 为一个 <code>tar</code> 压缩文件的话，压缩格式为 <code>gzip</code>, <code>bzip2</code> 以及 <code>xz</code> 的情况下，<code>ADD</code> 指令将会自动解压缩这个压缩文件到 &lt;目标路径&gt; 去。</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> scratch</div><div class="line"><span class="keyword">ADD</span> ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /</div><div class="line">...</div></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> scratch</span><br><span class="line"><span class="keyword">ADD</span> ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>这样就会自动解压到根目录</p>
 <h3 id="CMD容器启动命令"><a href="#CMD容器启动命令" class="headerlink" title="CMD容器启动命令"></a>CMD容器启动命令</h3><p><code>CMD</code> 指令就是用于指定默认的容器主进程的启动命令的。</p>
 <p>在运行时可以指定新的命令来替代镜像设置中的这个默认命令，比如，<code>ubuntu</code> 镜像默认的 <code>CMD</code> 是 <code>/bin/shell</code>，如果我们直接 <code>docker run -it ubuntu</code> 的话，会直接进入 <code>shell</code>。我们也可以在运行时指定运行别的命令，如 <code>docker run -it ubuntu cat /etc/os-release</code>。这就是用 <code>cat /etc/os-release</code> 命令替换了默认的 <code>/bin/shell</code> 命令了，输出了系统版本信息。</p>
@@ -343,17 +343,17 @@
 <p><code>shell</code>模式并不好用。推荐使用<code>exec</code>模式</p>
 <h3 id="ENTRYPOINT入口"><a href="#ENTRYPOINT入口" class="headerlink" title="ENTRYPOINT入口"></a>ENTRYPOINT入口</h3><h4 id="可以把镜像当命令使用"><a href="#可以把镜像当命令使用" class="headerlink" title="可以把镜像当命令使用"></a>可以把镜像当命令使用</h4><p>跟在镜像后的是command，会替换CMD的默认值（写在dockerfile里面的cmd值）</p>
 <p>如果都是使用<code>CMD</code>，我们在运行需要带参数的镜像就不行了会报错</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CMD</span> ["curl", "-s", "http://ip.gs"]</div></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span> ["curl", "-s", "http://ip.gs"]</span><br></pre></td></tr></table></figure>
 <p>这样就无法就后面接上参数</p>
 <p>报错，因为<code>-i</code>不是一个CMD命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run ip -i</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run ip -i</span><br></pre></td></tr></table></figure>
 <p>如果是使用<code>ENTRYPOINT</code>，CMD的内容会将会作为参数传给<code>ENTRYPOINT</code>，比如</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run ip -i</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run ip -i</span><br></pre></td></tr></table></figure>
 <p><code>-i</code>将会作为新的CMD传回来</p>
 <h4 id="应用运行前的准备工作"><a href="#应用运行前的准备工作" class="headerlink" title="应用运行前的准备工作"></a>应用运行前的准备工作</h4><p>启动了容器就是启动主进程，但是我们在这之前需要准备一下其他的工作</p>
 <p>可以写一个脚本判断CMD后面的命令来选择执行某些工作</p>
 <p>比如启动一个redis容器的时候，如果不是redis-server命令启动，我们就会使用root用户登录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run -it redis id</div><div class="line">uid=0(root) gid =0(root) groups =0 (root)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -it redis id</span><br><span class="line">uid=0(root) gid =0(root) groups =0 (root)</span><br></pre></td></tr></table></figure>
 <p>###未完待续~</p>
 
       
