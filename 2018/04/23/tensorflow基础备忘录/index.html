@@ -15,25 +15,18 @@
 
 
 
-<meta name="description" content="说是职业规划，其实仅仅只是为了进公司找到工作(对于升职加薪这些对于我这个在校生实在是太远了啊！！)，在CS界可是龙争虎斗的，特别是现在是大热的Data Scientist，更是血雨腥风。以下大部分内容来自知乎  知乎，与世界分享你刚编的故事(笑)">
-<meta name="keywords" content="python,DataMining">
+<meta name="description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
+<meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DataMining的职业规划">
-<meta property="og:url" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/index.html">
+<meta property="og:title" content="tensorflow基础备忘录">
+<meta property="og:url" content="http://yoursite.com/2018/04/23/tensorflow基础备忘录/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="说是职业规划，其实仅仅只是为了进公司找到工作(对于升职加薪这些对于我这个在校生实在是太远了啊！！)，在CS界可是龙争虎斗的，特别是现在是大热的Data Scientist，更是血雨腥风。以下大部分内容来自知乎  知乎，与世界分享你刚编的故事(笑)">
+<meta property="og:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/6.png">
-<meta property="og:updated_time" content="2018-03-18T05:09:41.070Z">
+<meta property="og:updated_time" content="2018-04-23T15:26:33.085Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DataMining的职业规划">
-<meta name="twitter:description" content="说是职业规划，其实仅仅只是为了进公司找到工作(对于升职加薪这些对于我这个在校生实在是太远了啊！！)，在CS界可是龙争虎斗的，特别是现在是大热的Data Scientist，更是血雨腥风。以下大部分内容来自知乎  知乎，与世界分享你刚编的故事(笑)">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/18/数据挖掘的职业规划/1.png">
+<meta name="twitter:title" content="tensorflow基础备忘录">
+<meta name="twitter:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -65,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>DataMining的职业规划 | kinoko3のblog</title>
+<title>tensorflow基础备忘录 | kinoko3のblog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +254,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-数据挖掘的职业规划" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-tensorflow基础备忘录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/03/18/数据挖掘的职业规划/" class="article-date">
-      <time datetime="2018-03-18T02:39:46.000Z" itemprop="datePublished">2018-03-18</time>
+      <a href="/2018/04/23/tensorflow基础备忘录/" class="article-date">
+      <time datetime="2018-04-23T14:31:32.000Z" itemprop="datePublished">2018-04-23</time>
 </a>
 
 
@@ -280,7 +273,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      DataMining的职业规划
+      tensorflow基础备忘录
     </h1>
   
 
@@ -291,7 +284,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DataMining/">DataMining</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -301,34 +294,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>说是职业规划，其实仅仅只是为了进公司找到工作(对于升职加薪这些对于我这个在校生实在是太远了啊！！)，在CS界可是龙争虎斗的，特别是现在是大热的Data Scientist，更是血雨腥风。以下大部分内容来自知乎</p>
+        <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p><code>tensorflow</code>上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，<code>TensorFlow</code>会默认维护一个计算图。在<code>tensorboard</code>中可以看到可视化的计算图。</p>
+<h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3><p>定义一个张量:<code>a = tf.constant([1.0, 2.0], name=&#39;a&#39;)</code>，<code>name</code>是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度(shape)、类型(type)。张量本身不存储数字。</p>
+<p>常量 tf.constant()<br>变量 tf.Variable()<br>占据位置的常量(好像是) tf.placeholder()</p>
 <blockquote>
-<p>知乎，与世界分享你刚编的故事(笑)</p>
+<p>使用时候sess.run(feed_dict={}),一个变量一个键值</p>
 </blockquote>
-<a id="more"></a>
-<p>来，我们看第一个知乎里面关注较高的问题<a href="https://www.zhihu.com/question/38770400" target="_blank" rel="noopener">零基础自学如何成为合格的数据挖掘工程师</a>:</p>
-<img src="/2018/03/18/数据挖掘的职业规划/1.png" width="1">
-<p>如果对这个问题感兴趣，可以直接访问观看，以下同理。</p>
-<p>这个问题的第一个回答很务实，直接给的课程地址:</p>
-<img src="/2018/03/18/数据挖掘的职业规划/2.png" width="2">
-<p>我真正感兴趣的是第二个问答:</p>
-<img src="/2018/03/18/数据挖掘的职业规划/3.png" width="3">
-<p>内容较多，而且英文名词较多，简单讲一下:</p>
-<p>首先就是<code>线性代数(Linear Algebra)</code></p>
-<p>因为无论是<code>机器学习</code>还是<code>数据挖掘</code>，大部分都是矩阵推导，<code>python</code>的<code>numpy</code>库和<code>pandas</code>库利用它们特有的数据结构简化了一部分。</p>
-<p>接下来是<code>概率论</code>和<code>统计学</code></p>
-<p>当然不需要全部掌握，但是还是需要掌握其中的一部分知识，不然直接生啃里面的数学模型也够呛，一些特有的数学符号也需要认识。</p>
-<p>接下来就是<code>数据挖掘</code>和<code>机器学习</code>的专业知识了。</p>
-<p>这回答有句话讲的很好，如果说数学是战术，那么编程就是武器。</p>
-<p>编程语言我们就用Python了，这个毋庸置疑</p>
-<p>对于一些Big Data框架我们有，<code>hadoop</code>，<code>sparak</code>之类的，了解一下。</p>
-<p>看完上面的，是不是对这个工作产生了恐惧性？？？</p>
-<p>我们来看第二个帖子<a href="https://www.zhihu.com/question/38652226/answer/77441121" target="_blank" rel="noopener">阿里巴巴数据挖掘工程师要求什么技能？</a>:</p>
-<p>哪怕是同一领域的职位，因为部门的不同，所用的知识层面也是不同的，哪怕是BAT中的阿里</p>
-<img src="/2018/03/18/数据挖掘的职业规划/4.png" width="4">
-<p>最后我觉得第三个较为适合我们大家，这是这个问题其中一个回答<a href="https://www.zhihu.com/question/37256015/answer/85198013" target="_blank" rel="noopener">机器学习、数据挖掘 如何进阶成为大神？</a>:</p>
-<img src="/2018/03/18/数据挖掘的职业规划/5.png" width="5">
-<img src="/2018/03/18/数据挖掘的职业规划/6.png" width="6">
+<h3 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h3><p>使用上下文来管理会话的关闭和开启，<code>with tf.Session() as sess: sess.run()</code></p>
+<h2 id="TensorFlow方法"><a href="#TensorFlow方法" class="headerlink" title="TensorFlow方法"></a>TensorFlow方法</h2><h3 id="张量方法"><a href="#张量方法" class="headerlink" title="张量方法"></a>张量方法</h3><p>.get_shape 获取维度信息</p>
+<h3 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a>数学方法</h3><p>tf.matmul(x, y) x,y矩阵相乘</p>
+<h3 id="随机数生成方法"><a href="#随机数生成方法" class="headerlink" title="随机数生成方法"></a>随机数生成方法</h3><p>tf.random_normal 正太分布<br>tf.truncated_normal 正态分布，随机出来的值偏离平均值超过2个标准差，这个数会随机<br>tf.random_uniform 平均分布<br>tf.random_gamma Gamma分布</p>
+<h3 id="常数生成方法"><a href="#常数生成方法" class="headerlink" title="常数生成方法"></a>常数生成方法</h3><p>tf.zeros 产生0的数组 tf.zeros([2,3]) 产生一个[[0,0,0], [0,0,0]]<br>tf.ones  产生1的数组<br>tf.fill 产生一个全部为给定数字的数组 tf.fill([2,3], 9)<br>tf.constant 产生一个常量</p>
+<h3 id="初始化所有变量"><a href="#初始化所有变量" class="headerlink" title="初始化所有变量"></a>初始化所有变量</h3><p>init_op = tf.global_variables_initializer()<br>sess.run(init_op)</p>
+
       
     </div>
     
@@ -339,16 +317,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/22/数字图像处理笔记/">
-                    数字图像处理笔记
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/17/python学习计划-新手向/">
-                    python学习计划(数据分析新手向)
+                <a href="/2018/04/14/github二级验证登录/">
+                    github二级验证登录
                 </a>
             </div>
         
@@ -360,7 +332,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础概念"><span class="toc-number">1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算图"><span class="toc-number">1.1.</span> <span class="toc-text">计算图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#张量"><span class="toc-number">1.2.</span> <span class="toc-text">张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话"><span class="toc-number">1.3.</span> <span class="toc-text">会话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorFlow方法"><span class="toc-number">2.</span> <span class="toc-text">TensorFlow方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#张量方法"><span class="toc-number">2.1.</span> <span class="toc-text">张量方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学方法"><span class="toc-number">2.2.</span> <span class="toc-text">数学方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机数生成方法"><span class="toc-number">2.3.</span> <span class="toc-text">随机数生成方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常数生成方法"><span class="toc-number">2.4.</span> <span class="toc-text">常数生成方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化所有变量"><span class="toc-number">2.5.</span> <span class="toc-text">初始化所有变量</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -396,7 +368,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"DataMining的职业规划　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"tensorflow基础备忘录　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -416,8 +388,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2018/03/18/数据挖掘的职业规划/';
-            this.page.identifier = '2018/03/18/数据挖掘的职业规划/';
+            this.page.url = 'http://yoursite.com/2018/04/23/tensorflow基础备忘录/';
+            this.page.identifier = '2018/04/23/tensorflow基础备忘录/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -439,15 +411,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/22/数字图像处理笔记/" title="上一篇: 数字图像处理笔记">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/17/python学习计划-新手向/" title="下一篇: python学习计划(数据分析新手向)">
+            <a href="/2018/04/14/github二级验证登录/" title="下一篇: github二级验证登录">
                 <i class="fa fa-angle-right"></i>
             </a>
         
