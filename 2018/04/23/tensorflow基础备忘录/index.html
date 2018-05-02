@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
+<meta name="description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
 <meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow基础备忘录">
 <meta property="og:url" content="http://yoursite.com/2018/04/23/tensorflow基础备忘录/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
+<meta property="og:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-23T15:26:33.085Z">
+<meta property="og:updated_time" content="2018-04-25T06:40:25.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow基础备忘录">
-<meta name="twitter:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。 张量定义一个张量:a = tf.constant([1.0, 2.0], name=&amp;#39;a&amp;#39;)，name是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度">
+<meta name="twitter:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -294,7 +294,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p><code>tensorflow</code>上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，<code>TensorFlow</code>会默认维护一个计算图。在<code>tensorboard</code>中可以看到可视化的计算图。</p>
+        <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p><code>tensorflow</code>上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，<code>TensorFlow</code>会默认维护一个计算图。在<code>tensorboard</code>中可以看到可视化的计算图。<br><a id="more"></a></p>
 <h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3><p>定义一个张量:<code>a = tf.constant([1.0, 2.0], name=&#39;a&#39;)</code>，<code>name</code>是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度(shape)、类型(type)。张量本身不存储数字。</p>
 <p>常量 tf.constant()<br>变量 tf.Variable()<br>占据位置的常量(好像是) tf.placeholder()</p>
 <blockquote>

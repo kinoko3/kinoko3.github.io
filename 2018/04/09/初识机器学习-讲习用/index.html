@@ -15,13 +15,13 @@
 
 
 
-<meta name="description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 代价函数我们来了解一个机器学习里非常重要的概念，代价函数(c">
+<meta name="description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识机器学习-线性模型(讲习用)">
 <meta property="og:url" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 代价函数我们来了解一个机器学习里非常重要的概念，代价函数(c">
+<meta property="og:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/2.png">
@@ -29,10 +29,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/4.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/5.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/6.png">
-<meta property="og:updated_time" content="2018-04-13T11:07:18.682Z">
+<meta property="og:updated_time" content="2018-04-25T06:40:16.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识机器学习-线性模型(讲习用)">
-<meta name="twitter:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量 代价函数我们来了解一个机器学习里非常重要的概念，代价函数(c">
+<meta name="twitter:description" content="前言给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。 线性模型(linear model)的形式为: f($\vec x$) = $\vec w$·$\vec x$ + b $\vec w$是每个特征对的权重生成的权重向量">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/09/初识机器学习-讲习用/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -304,7 +304,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>给定样本$\vec x$,我们用列向量表示该样本$\vec x$=$(x1,x2,x3)^T$。样本有n种特征，我们用x(i)表示样本$\vec x$的第i个特征。</p>
 <p>线性模型(linear model)的形式为:</p>
 <p>f($\vec x$) = $\vec w$·$\vec x$ + b</p>
-<p>$\vec w$是每个特征对的权重生成的权重向量</p>
+<p>$\vec w$是每个特征对的权重生成的权重向量<br><a id="more"></a></p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>我们来了解一个机器学习里非常重要的概念，代价函数(cost function)比如我们有一个模型y = $\theta 0$+$\theta 1$x,我们要确定$\theta 0$和$\theta 1$的值</p>
 <p>我们简单的定义几个值:</p>
 <img src="/2018/04/09/初识机器学习-讲习用/1.png" title="linear_cost_function_1">
