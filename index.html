@@ -302,8 +302,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_bytes_feature</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">    image_raw_data = tf.gfile.FastGFile(<span class="string">'../train/'</span>+name, <span class="string">'rb'</span>).read()</span><br><span class="line">    example = tf.train.Example(features=tf.train.Features(feature=&#123;</span><br><span class="line">                <span class="string">'image'</span>: _bytes_feature(image_raw_data),&#125;))</span><br></pre></td></tr></table></figure>
 <p>但是我读取之后使用了jpeg解码。。。把解码后的数据读进去了，然后几何倍数般的文件大小增长。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img_data = tf.image.decode_jpeg(image_raw_data)</span><br><span class="line">img_data = tf.image.convert_image_dtype(img_data, dtype=tf.float32)</span><br></pre></td></tr></table></figure>
-<h2 id="VGG16-迁移学习"><a href="#VGG16-迁移学习" class="headerlink" title="VGG16 迁移学习"></a>VGG16 迁移学习</h2><p>最后一直在思考如何</p>
-
+<h2 id="VGG16-迁移学习"><a href="#VGG16-迁移学习" class="headerlink" title="VGG16 迁移学习"></a>VGG16 迁移学习</h2><p>最后一直在思考如何使用高正确率的网络(之前的网络能跑是能跑，但是正确率有点低，训练集都这样了，拿到测试集不完蛋了)，后来想到了之前的<code>CTPN</code>提取<code>feature map</code>时候使用的是VGG16，然后就去了解了VGG16，顺便了解了迁移学习，经过一段时间的了解，明白了迁移学习在<code>TensorFlow</code>里的主要实现机制，在<code>TensorFlow</code>里进行梯度下降之类的优化操作(反向传播BP)是使用优化器(optimizer)，而这个优化器优化的都是<code>TensorFlow</code>里的变量<code>tf.Variable</code>，我们把需要优化的参数使用变量，固定的参数使用常量之类的就好了，这样就很简单了。</p>
+<p>经过很多层卷积层和池化层之后，参数到FC分类层的时候确实变得很少了，而且迁移学习仅仅是训练后面几个层而已，一开始是仅仅训练最后的FC层，在数据集上获得了大概70的正确率。</p>
+<p>大概图(VGG主体)(tensorboard):</p>
+<img src="/2018/05/16/记一次猫狗分类线上比赛/VGG16.png" title="VGG16">
+<p>理论图:</p>
+<img src="/2018/05/16/记一次猫狗分类线上比赛/VGG16-map.png" title="VGG16">
+<h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
       
     </div>
     
