@@ -15,18 +15,13 @@
 
 
 
-<meta name="description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
-<meta name="keywords" content="tensorflow">
-<meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow基础备忘录">
-<meta property="og:url" content="http://yoursite.com/2018/04/23/tensorflow基础备忘录/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kinoko3のblog">
+<meta property="og:url" content="http://yoursite.com/tags/pandas/index.html">
 <meta property="og:site_name" content="kinoko3のblog">
-<meta property="og:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-25T06:40:25.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow基础备忘录">
-<meta name="twitter:description" content="基础概念计算图tensorflow上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，TensorFlow会默认维护一个计算图。在tensorboard中可以看到可视化的计算图。">
+<meta name="twitter:title" content="kinoko3のblog">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +53,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tensorflow基础备忘录 | kinoko3のblog</title>
+<title>Tag: pandas | kinoko3のblog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,9 +63,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -254,191 +249,56 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-tensorflow基础备忘录" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2018/04/23/tensorflow基础备忘录/" class="article-date">
-      <time datetime="2018-04-23T14:31:32.000Z" itemprop="datePublished">2018-04-23</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2018/06/06/pandas一些技巧/" class="archive-article-date">
+      <time datetime="2018-06-06T08:38:26.000Z" itemprop="datePublished">06-06</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      tensorflow基础备忘录
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/06/06/pandas一些技巧/">pandas一些技巧</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p><code>tensorflow</code>上的每一个计算都是计算图上的一个节点，节点之间的边描述了计算之间的依赖关系，<code>TensorFlow</code>会默认维护一个计算图。在<code>tensorboard</code>中可以看到可视化的计算图。<br><a id="more"></a></p>
-<h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3><p>定义一个张量:<code>a = tf.constant([1.0, 2.0], name=&#39;a&#39;)</code>，<code>name</code>是这个张量的名字，张量几乎就是多维数组，张量有3个属性，名字(name)、维度(shape)、类型(type)。张量本身不存储数字。</p>
-<p>常量 tf.constant()<br>变量 tf.Variable()<br>占据位置的常量(好像是) tf.placeholder()</p>
-<blockquote>
-<p>使用时候sess.run(feed_dict={}),一个变量一个键值</p>
-</blockquote>
-<h3 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h3><p>使用上下文来管理会话的关闭和开启，<code>with tf.Session() as sess: sess.run()</code></p>
-<h2 id="TensorFlow方法"><a href="#TensorFlow方法" class="headerlink" title="TensorFlow方法"></a>TensorFlow方法</h2><h3 id="张量方法"><a href="#张量方法" class="headerlink" title="张量方法"></a>张量方法</h3><p>.get_shape 获取维度信息</p>
-<h3 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a>数学方法</h3><p>tf.matmul(x, y) x,y矩阵相乘</p>
-<h3 id="随机数生成方法"><a href="#随机数生成方法" class="headerlink" title="随机数生成方法"></a>随机数生成方法</h3><p>tf.random_normal 正太分布<br>tf.truncated_normal 正态分布，随机出来的值偏离平均值超过2个标准差，这个数会随机<br>tf.random_uniform 平均分布<br>tf.random_gamma Gamma分布</p>
-<h3 id="常数生成方法"><a href="#常数生成方法" class="headerlink" title="常数生成方法"></a>常数生成方法</h3><p>tf.zeros 产生0的数组 tf.zeros([2,3]) 产生一个[[0,0,0], [0,0,0]]<br>tf.ones  产生1的数组<br>tf.fill 产生一个全部为给定数字的数组 tf.fill([2,3], 9)<br>tf.constant 产生一个常量</p>
-<h3 id="初始化所有变量"><a href="#初始化所有变量" class="headerlink" title="初始化所有变量"></a>初始化所有变量</h3><p>init_op = tf.global_variables_initializer()<br>sess.run(init_op)</p>
 
-      
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pandas/">pandas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
-    
-  </div>
-  
-    
 
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/05/02/神经网络主要优化方法/">
-                    神经网络主要优化方法
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/04/14/github二级验证登录/">
-                    github二级验证登录
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础概念"><span class="toc-number">1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算图"><span class="toc-number">1.1.</span> <span class="toc-text">计算图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#张量"><span class="toc-number">1.2.</span> <span class="toc-text">张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话"><span class="toc-number">1.3.</span> <span class="toc-text">会话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorFlow方法"><span class="toc-number">2.</span> <span class="toc-text">TensorFlow方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#张量方法"><span class="toc-number">2.1.</span> <span class="toc-text">张量方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学方法"><span class="toc-number">2.2.</span> <span class="toc-text">数学方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机数生成方法"><span class="toc-number">2.3.</span> <span class="toc-text">随机数生成方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常数生成方法"><span class="toc-number">2.4.</span> <span class="toc-text">常数生成方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化所有变量"><span class="toc-number">2.5.</span> <span class="toc-text">初始化所有变量</span></a></li></ol></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tensorflow基础备忘录　| kinoko3のblog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
-</div>
-
-
-
-
-
-
-
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
-    
-        <section id="comments">
-    <style> aside.comment-bar { margin: auto 30px; }</style>
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2018/04/23/tensorflow基础备忘录/';
-            this.page.identifier = '2018/04/23/tensorflow基础备忘录/';
-        };
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = '//kinoko3.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        }
-    </script>
-    
-    <script> loadComment(); </script>
-
-</section>
-
+  
+    </div></section>
+  
 
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2018/05/02/神经网络主要优化方法/" title="上一篇: 神经网络主要优化方法">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2018/04/14/github二级验证登录/" title="下一篇: github二级验证登录">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/pandas一些技巧/">pandas一些技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/记一次猫狗分类线上比赛/">记一次猫狗分类线上比赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/神经网络主要优化方法/">神经网络主要优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/23/tensorflow基础备忘录/">tensorflow基础备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/14/github二级验证登录/">github二级验证登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/初识机器学习-讲习用/">初识机器学习-线性模型(讲习用)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/09/Vue从零养成/">Vue从零养成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/Opencv-python全养成/">OpenCV-python全养成</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/数字图像处理笔记/">数字图像处理笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/数据挖掘的职业规划/">DataMining的职业规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/python学习计划-新手向/">python学习计划(数据分析新手向)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/词云简单实现/">词云简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/OpenCV-python的坑/">OpenCV-python的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/11/liunx全养成①/">liunx全养成①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Apriori-python复现过程/">Apriori-python复现过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/19/mongodb部署设置/">mongodb一些部署设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/10/scrapy开发备忘录/">scrapy开发备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/python装饰器/">python装饰器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/python特殊方法学习①/">python特殊方法学习①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/18/shadowsocsR-privoxy-liunx下使用SSR全局代理/">shadowsocsR+privoxy liunx下使用SSR全局代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/11/flask-uwsgi-nginx的部署/">flask+uwsgi+nginx的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/win下的clion配置/">win下的Clion配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/17/React学习纪录/">React学习纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/06/七牛云API工具使用/">七牛云API工具使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/图解TCP-IP读书纪录/">图解TCP/IP读书纪录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/mongodb备忘录/">mongodb备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/19/zsh终端折腾纪录①/">zsh终端折腾纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/docker实践尝试/">docker实践尝试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/18/python知识备忘录/">python知识备忘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/17/Docker学习纪录③/">Docker学习纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/python字符串技巧/">python字符串技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/16/Docker学习纪录②/">Docker学习纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/Docker学习心得①/">Docker学习心得①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/10/搭建git服务器/">搭建git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/docker学习纪录①/">Docker学习纪录①</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录③/">树莓派3B折腾纪录③</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/树莓派3B折腾纪录②/">树莓派3B折腾纪录②</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/06/树莓派3B折腾纪录①/">树莓派3B折腾纪录①</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
